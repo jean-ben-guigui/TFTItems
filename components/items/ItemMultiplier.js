@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Text, View, ScrollView, StyleSheet
+  Text, View, ScrollView, StyleSheet, Button
 } from 'react-native';
 import Item from './Item';
 import ItemTable from './ItemTable';
@@ -8,6 +8,7 @@ import DumbLoader from '../base/DumbLoader';
 
 import styles from '../../genericStyles';
 import * as itemService from '../../services/items';
+import DefaultButton from '../base/DefaultButton';
 
 class ItemMultiplier extends React.PureComponent {
   constructor(props) {
@@ -28,7 +29,7 @@ class ItemMultiplier extends React.PureComponent {
   }
 
   newItem() {
-    this.setState({ item: itemService.getRandomItem() });
+    this.setState({ item: itemService.getRandomItem(), guess: this.guessEnum.notYet });
   }
 
 
@@ -38,6 +39,8 @@ class ItemMultiplier extends React.PureComponent {
       case this.guessEnum.success:
         return (
           <View style={[styles.centered, styles.double]}>
+            <Text>BIIIIIEN</Text>
+            <Text>{item.displayName}</Text>
             <Item source={item.imageSource} />
             <Text>{item.description}</Text>
           </View>
@@ -45,23 +48,25 @@ class ItemMultiplier extends React.PureComponent {
       case this.guessEnum.fail:
         return (
           <View style={[styles.centered, styles.double]}>
+            <Text>C&apos;est non.</Text>
+            <Text>{item.displayName}</Text>
             <Item source={item.imageSource} />
             <Text>{item.description}</Text>
           </View>
         );
       default:
         return (
-          <ScrollView>
-            <ItemTable onPress={
+          <ItemTable
+            style={{ flex: 1 }}
+            onPress={
               (itemName) => {
                 this.setState(
-                  { guess: itemName === item.name ? this.guessEnum.success : this.guessEnum.fail }
+                  { guess: itemName === item.displayName ? this.guessEnum.success : this.guessEnum.fail }
                 );
                 // console.log(itemName);
               }
             }
-            />
-          </ScrollView>
+          />
         );
     }
   }
@@ -92,6 +97,13 @@ class ItemMultiplier extends React.PureComponent {
           </View>
         </View>
         {this.renderFindItem(item)}
+        {/* <DefaultButton onPressFn={this.newItem} label="New item" disabled={false} /> */}
+        <Button
+          onPress={() => this.newItem()}
+          title="New item"
+          color="#841584"
+          accessibilityLabel="Bien"
+        />
       </View>
     );
   }

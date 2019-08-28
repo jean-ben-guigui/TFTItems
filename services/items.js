@@ -2,14 +2,14 @@
 import { basicItems } from './BasicItem';
 import Recipe from './Recipe';
 
-const ie = require('../images/Infinity Edge.png');
-const divine = require('../images/Sword Of The Divine.png');
-const gunblade = require('../images/Hextech Gunblade.png');
-const shojin = require('../images/Spear Of Shojin.png');
-const ga = require('../images/Guardian Angel.png');
-const bt = require('../images/Bloodthirster.png');
-const zeke = require('../images/Zeke\'s Herald.png');
-const youmuu = require('../images/Youmuu\'s Ghostblade.png');
+const ie = require('../assets/images/InfinityEdge.png');
+const divine = require('../assets/images/SwordOfTheDivine.png');
+const gunblade = require('../assets/images/HextechGunblade.png');
+const shojin = require('../assets/images/SpearOfShojin.png');
+const ga = require('../assets/images/GuardianAngel.png');
+const bt = require('../assets/images/Bloodthirster.png');
+const zeke = require('../assets/images/ZekesHerald.png');
+const youmuu = require('../assets/images/YoumuusGhostblade.png');
 
 /**
  *

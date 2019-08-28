@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { items } from '../../services/items';
 import Item from './Item';
+import * as genericStyles from '../../genericStyles';
 
 const propTypes = {
   onPress: PropTypes.func.isRequired
@@ -15,16 +16,22 @@ class ItemTable extends React.PureComponent {
     Object.values(items).forEach((item) => {
       const { imageSource } = item;
       itemsToDisplay.push(
-        <TouchableOpacity key={item.displayName} onPress={() => onPress(item.displayName)}>
+        <TouchableOpacity
+          key={item.displayName}
+          onPress={() => onPress(item.displayName)}
+          style={{ width: 50, height: 50 }}
+        >
           <Item source={imageSource} />
         </TouchableOpacity>
       );
     });
     return (
-      <View>
-        {itemsToDisplay}
+      <ScrollView style={{ flex: 1 }}>
+        <View style={{ flexWrap: 1, flexDirection: 'row' }}>
+          {itemsToDisplay}
+        </View>
         {children}
-      </View>
+      </ScrollView>
     );
   }
 }

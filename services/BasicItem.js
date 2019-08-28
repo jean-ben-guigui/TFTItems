@@ -1,14 +1,14 @@
 
 import * as types from '../components/types/bonusTypes';
 
-const recurve = require('../images/recurve.png');
-const tear = require('../images/Tear Of The Goddess.png');
-const bf = require('../images/B.F. Sword.png');
-const rod = require('../images/Needlessly Large Rod.png');
-const belt = require('../images/Giant\'s Belt.png');
-const cloak = require('../images/Negatron Cloak.png');
-const spatula = require('../images/Spatula.png');
-const vest = require('../images/Chain Vest.png');
+const recurve = require('../assets/images/recurve.png');
+const tear = require('../assets/images/TearOfTheGoddess.png');
+const bf = require('../assets/images/BFSword.png');
+const rod = require('../assets/images/NeedlesslyLargeRod.png');
+const belt = require('../assets/images/GiantsBelt.png');
+const cloak = require('../assets/images/NegatronCloak.png');
+const spatula = require('../assets/images/Spatula.png');
+const vest = require('../assets/images/ChainVest.png');
 
 /**
  *

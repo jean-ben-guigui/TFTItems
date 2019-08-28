@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-export default styles = StyleSheet.create({
+export const mainColor = '#eba31e';
+
+export default StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -10,7 +12,7 @@ export default styles = StyleSheet.create({
     justifyContent: 'center'
   },
   horizontal: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
   half: {
     flex: 0.5,
