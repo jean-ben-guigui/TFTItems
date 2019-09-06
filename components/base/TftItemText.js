@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import { mainFont } from '../../genericStyles';
 
 const propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
@@ -24,6 +25,7 @@ TftItemText.defaultProps = {
 
 const textStyle = StyleSheet.create({
   text: {
-    fontFamily: 'Papyrus',
+    fontFamily: mainFont,
+    color: 'white'
   }
 });

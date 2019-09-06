@@ -3,16 +3,18 @@ import {
   View, StyleSheet, Button
 } from 'react-native';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import DumbLoader from '../base/DumbLoader';
 import Item from './Item';
 import ItemTable from './ItemTable';
 
-import styles from '../../genericStyles';
 import * as itemService from '../../services/items';
 import TftItemText from '../base/TftItemText';
 import ItemDetails from './itemDetails';
 import { winningQuotesArray, loosingQuotesArray } from '../../constant';
+import { winningColor, styles, loosingColor } from '../../genericStyles';
+
+const itemPadding = 0;
 
 class ItemMultiplier extends React.PureComponent {
   constructor(props) {
@@ -45,12 +47,12 @@ class ItemMultiplier extends React.PureComponent {
 
     switch (guess) {
       case this.guessEnum.success:
-        firstLine = <MaterialIcons name="check-circle" size={32} color="green" />;
+        firstLine = <Ionicons name="ios-thumbs-up" size={32} color={winningColor} />;
         secondLine = winningQuotesArray[Math.floor(Math.random() * winningQuotesArray.length)];
         styleQuote = style.winningQuote;
         break;
       case this.guessEnum.fail:
-        firstLine = <MaterialIcons name="close" size={32} color="red" />;
+        firstLine = <Ionicons name="ios-thumbs-down" size={32} color={loosingColor} />;
         secondLine = loosingQuotesArray[Math.floor(Math.random() * loosingQuotesArray.length)];
         break;
       default:
@@ -112,14 +114,16 @@ class ItemMultiplier extends React.PureComponent {
       <View style={styles.container}>
         <View style={[styles.centered]}>
           <View style={[styles.centered, style.headerTitle]}>
-            <TftItemText>What item does result of the following item combination?</TftItemText>
+            <TftItemText style={style.headerText}>
+              What item results of the following item combination?
+            </TftItemText>
           </View>
           <View style={[styles.centered, styles.horizontal, style.itemAddition]}>
-            <View style={[styles.centered, styles.container]}>
+            <View style={[styles.centered, styles.container, style.itemToGuessLeft]}>
               <Item source={item1.imageSource} />
             </View>
-            <TftItemText>+</TftItemText>
-            <View style={[styles.centered, styles.container]}>
+            <MaterialCommunityIcons name="plus" size={22} color="white" />
+            <View style={[styles.centered, styles.container, style.itemToGuessRight]}>
               <Item source={item2.imageSource} />
             </View>
           </View>
@@ -128,12 +132,13 @@ class ItemMultiplier extends React.PureComponent {
           {this.renderFindItem(item)}
         </View>
         {/* <DefaultButton onPressFn={this.newItem} label="New item" disabled={false} /> */}
-        <Button
-          onPress={() => this.newItem()}
-          title="New item"
-          color="#841584"
-          accessibilityLabel="Bien"
-        />
+        {/* <View style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}>
+          <Button
+            onPress={() => this.newItem()}
+            title="New item"
+            color="#fff"
+          />
+        </View> */}
       </View>
     );
   }
@@ -141,35 +146,42 @@ class ItemMultiplier extends React.PureComponent {
 
 const style = StyleSheet.create({
   headerTitle: {
-    padding: 30
+    padding: 30,
+  },
+  headerText: {
+    fontSize: 18,
+    textAlign: 'center',
   },
   itemAddition: {
     marginLeft: 40,
     marginRight: 40,
     paddingTop: 15,
     paddingBottom: 15,
-    borderColor: '#eba31e',
-    borderRadius: 50,
-    borderWidth: 2,
-    overflow: 'hidden'
+    // borderColor: 'white',
+    borderRadius: 10,
+    // borderWidth: 2,
+    overflow: 'hidden',
+    backgroundColor: 'rgba(255, 255, 255, 0.12)',
   },
   friendlyText: {
     fontSize: 18,
     fontWeight: 'bold'
   },
   middleContainer: {
-    paddingTop: 40,
-    paddingBottom: 40
+    paddingTop: 20,
+    paddingBottom: 10
   },
   winningQuote: {
-    color: '#3b9653'
+    color: winningColor
   },
   loosingQuote: {
-    color: '#ff0000'
+    color: loosingColor
   },
-  item: {
-    borderColor: 'black',
-    borderWidth: 1
+  itemToGuessLeft: {
+    paddingLeft: itemPadding
+  },
+  itemToGuessRight: {
+    paddingRight: itemPadding
   }
 });
 

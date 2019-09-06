@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { items } from '../../services/items';
 import Item from './Item';
-import styles from '../../genericStyles';
+import { styles } from '../../genericStyles';
 
 const propTypes = {
   onPress: PropTypes.func.isRequired
@@ -21,7 +21,7 @@ class ItemTable extends React.PureComponent {
         <TouchableOpacity
           key={item.displayName}
           onPress={() => onPress(item.displayName)}
-          style={{ width: 50, height: 50 }}
+          style={{ width: 50, height: 50, margin: 3 }}
         >
           <Item source={imageSource} />
         </TouchableOpacity>
@@ -46,7 +46,10 @@ const itemTableStyle = StyleSheet.create({
   itemsWrapper: {
     flexWrap: 'wrap',
     flexDirection: 'row',
-    padding: 15
+    margin: 15,
+    borderColor: 'white',
+    overflow: 'hidden',
+    backgroundColor: 'white'
   }
 });
 

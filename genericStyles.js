@@ -3,13 +3,15 @@ import { StyleSheet } from 'react-native';
 export const mainColor = '#eba31e';
 export const mainFont = 'Papyrus';
 export const bigFontSize = 22;
+export const winningColor = 'gold';
+export const loosingColor = 'black';
 
-export default StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   centered: {
-    backgroundColor: '#fff',
+    backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center'
   },

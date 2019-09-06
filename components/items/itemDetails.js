@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import ItemDto from '../../services/items';
 import TftItemText from '../base/TftItemText';
-import * as styles from '../../genericStyles';
+import { styles, bigFontSize } from '../../genericStyles';
 
 const propTypes = {
   item: PropTypes.instanceOf(ItemDto).isRequired,
@@ -33,7 +33,7 @@ ItemDetails.propTypes = propTypes;
 
 const style = StyleSheet.create({
   title: {
-    fontSize: styles.bigFontSize,
+    fontSize: bigFontSize,
     textAlign: 'center'
   },
   textContainer: {

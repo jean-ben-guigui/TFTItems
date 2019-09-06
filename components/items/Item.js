@@ -15,6 +15,7 @@ export default class Item extends React.PureComponent {
           {
             width: 50,
             height: 50,
+            borderRadius: 10
           }
         }
         resizeMode="contain"

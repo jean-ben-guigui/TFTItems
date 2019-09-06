@@ -6,7 +6,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
-import * as genericStyle from '../../genericStyles';
+import { styles } from '../../genericStyles';
 
 const propTypes = {
   onPressFn: PropTypes.func.isRequired,
@@ -60,7 +60,7 @@ class DefaultButton extends React.PureComponent {
 
 const styleSheet = StyleSheet.create({
   defaultValidateButton: {
-    backgroundColor: genericStyle.color,
+    backgroundColor: styles.color,
     borderRadius: 50,
     alignItems: 'center',
     padding: 15,
