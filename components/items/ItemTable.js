@@ -1,9 +1,11 @@
 import React from 'react';
-import { ScrollView, TouchableOpacity, View } from 'react-native';
+import {
+  ScrollView, TouchableOpacity, View, StyleSheet
+} from 'react-native';
 import PropTypes from 'prop-types';
 import { items } from '../../services/items';
 import Item from './Item';
-import * as genericStyles from '../../genericStyles';
+import styles from '../../genericStyles';
 
 const propTypes = {
   onPress: PropTypes.func.isRequired
@@ -26,16 +28,26 @@ class ItemTable extends React.PureComponent {
       );
     });
     return (
-      <ScrollView style={{ flex: 1 }}>
-        <View style={{ flexWrap: 1, flexDirection: 'row' }}>
-          {itemsToDisplay}
-        </View>
-        {children}
-      </ScrollView>
+      <View style={[styles.container, styles.centered]}>
+        <ScrollView tyle={[styles.centered]}>
+          <View style={[itemTableStyle.itemsWrapper, styles.centered]}>
+            {itemsToDisplay}
+          </View>
+          {children}
+        </ScrollView>
+      </View>
     );
   }
 }
 
 ItemTable.propTypes = propTypes;
+
+const itemTableStyle = StyleSheet.create({
+  itemsWrapper: {
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    padding: 15
+  }
+});
 
 export default ItemTable;

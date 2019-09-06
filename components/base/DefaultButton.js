@@ -3,8 +3,7 @@ import {
   Animated,
   StyleSheet,
   Text,
-  TouchableOpacity,
-  ViewPropTypes,
+  TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
 import * as genericStyle from '../../genericStyles';
@@ -12,7 +11,7 @@ import * as genericStyle from '../../genericStyles';
 const propTypes = {
   onPressFn: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
-  style: ViewPropTypes.style,
+  style: PropTypes.style,
   label: PropTypes.string,
 };
 
