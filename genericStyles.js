@@ -4,7 +4,8 @@ export const mainColor = '#eba31e';
 export const mainFont = 'Papyrus';
 export const bigFontSize = 22;
 export const winningColor = 'gold';
-export const loosingColor = 'black';
+export const loosingColor = 'darkgray';
+export const imageSize = 50;
 
 export const styles = StyleSheet.create({
   container: {

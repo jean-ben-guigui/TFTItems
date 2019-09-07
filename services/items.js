@@ -99,8 +99,14 @@ export const items = {
 /**
  * returns a random Item from the Items const.
  */
-export function getRandomItem() {
+export function getRandomItem(item) {
   const keys = Object.keys(items);
-  const randomKeyIndex = Math.round(Math.random() * keys.length);
+  const randomKeyIndex = Math.round(Math.random() * (keys.length - 1));
+  if (keys.length < 2) {
+    return items[keys[randomKeyIndex]];
+  }
+  if (item && item.displayName === items[keys[randomKeyIndex]].displayName) {
+    return getRandomItem(item);
+  }
   return items[keys[randomKeyIndex]];
 }

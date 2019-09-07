@@ -1,2 +1,2 @@
-export const winningQuotesArray = ['That\'s it!', 'Well done!', 'Nice one', 'Great Job', 'Congratulations', 'Nice!', 'Okay there you go', 'Amazing!', 'Keep on the good job', 'You\'re doing great'];
-export const loosingQuotesArray = ['Not at all!', 'Let\'s forget about it and move on', 'Not really no...', 'Nope', 'Try again', 'Almost... but no', 'Not this time', 'I\'m sure you can do better'];
+export const winningQuotesArray = ['Well done!', 'Nice one', 'Great Job', 'Congratulations', 'Nice!', 'Okay there you go', 'Amazing!', 'Keep on the good job', 'You\'re doing great'];
+export const loosingQuotesArray = ['Let\'s forget about it and try again', 'Let\'s focus a bit more for the next one', 'Next time will be better', 'I\'m sure you can do better'];

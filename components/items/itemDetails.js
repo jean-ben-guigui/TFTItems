@@ -14,14 +14,14 @@ export default class ItemDetails extends React.PureComponent {
   render() {
     const { children, item } = this.props;
     return (
-      <View style={[styles.centered, styles.container]}>
+      <View style={[styles.centered]}>
         <View style={[style.textContainer, styles.centered]}>
           <TftItemText style={style.title}>{item.displayName}</TftItemText>
         </View>
         {children}
         <View style={style.textContainer}>
           <View style={[style.textContainer, styles.centered]}>
-            <TftItemText>{item.description}</TftItemText>
+            <TftItemText style={style.details}>{item.description}</TftItemText>
           </View>
         </View>
       </View>
@@ -38,5 +38,8 @@ const style = StyleSheet.create({
   },
   textContainer: {
     padding: 12
+  },
+  details: {
+    fontSize: 18
   }
 });

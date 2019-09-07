@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import PropTypes from 'prop-types';
+import { styles, imageSize } from '../../genericStyles';
 
 const propTypes = {
   source: PropTypes.node.isRequired
@@ -13,8 +14,8 @@ export default class Item extends React.PureComponent {
       <Image
         style={
           {
-            width: 50,
-            height: 50,
+            width: imageSize,
+            height: imageSize,
             borderRadius: 10
           }
         }

@@ -21,7 +21,7 @@ class ItemTable extends React.PureComponent {
         <TouchableOpacity
           key={item.displayName}
           onPress={() => onPress(item.displayName)}
-          style={{ width: 50, height: 50, margin: 3 }}
+          style={{ margin: 3 }}
         >
           <Item source={imageSource} />
         </TouchableOpacity>

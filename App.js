@@ -2,7 +2,7 @@ import React from 'react';
 import { View, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import ItemMultiplier from './components/items/ItemMultiplier';
+import MainScreen from './components/items/MainScreen';
 import { styles } from './genericStyles';
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
     >
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
-          <ItemMultiplier />
+          <MainScreen />
         </View>
       </SafeAreaView>
     </LinearGradient>
