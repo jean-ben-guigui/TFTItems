@@ -1,7 +1,9 @@
 import React from 'react';
 import {
-  View, StyleSheet, Button
+  View, StyleSheet, Button, ScrollView
 } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
+
 import DumbLoader from '../base/DumbLoader';
 import ItemTable from './ItemTable';
 import ItemAdditioner from './ItemAdditioner';
@@ -52,7 +54,7 @@ class MainScreen extends React.PureComponent {
       );
     }
     return (
-      <View style={styles.container}>
+      <View style={[styles.centered, styles.container, style.mainContainer]}>
         <View style={[styles.centered]}>
           <View style={[styles.centered, style.headerTitle]}>
             <TftItemText style={style.headerText}>
@@ -61,7 +63,7 @@ class MainScreen extends React.PureComponent {
                   ? 'Nope, the combination was in fact:'
                   : guess === this.guessEnum.success
                     ? 'The item combination was indeed:'
-                    : 'What item results of the following item combination?'
+                    : 'What item results of the following combination?'
               }
             </TftItemText>
           </View>
@@ -70,20 +72,22 @@ class MainScreen extends React.PureComponent {
         {
           guess === this.guessEnum.notYet
             ? (
-              <ItemTable
-                style={{ flex: 1 }}
-                onPress={
-                  (itemName) => {
-                    this.setState(
-                      {
-                        guess: itemName === item.displayName
-                          ? this.guessEnum.success
-                          : this.guessEnum.fail
-                      }
-                    );
+
+              <ScrollView>
+                <ItemTable
+                  onPress={
+                    (itemName) => {
+                      this.setState(
+                        {
+                          guess: itemName === item.displayName
+                            ? this.guessEnum.success
+                            : this.guessEnum.fail
+                        }
+                      );
+                    }
                   }
-                }
-              />
+                />
+              </ScrollView>
             )
             : <Result success={guess === this.guessEnum.success} />
         }
@@ -119,6 +123,13 @@ const style = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 10
   },
+  mainContainer: {
+    marginLeft: '2%',
+    marginRight: '2%'
+  },
+  tableContainer: {
+    paddingTop: 20
+  }
 });
 
 export default MainScreen;

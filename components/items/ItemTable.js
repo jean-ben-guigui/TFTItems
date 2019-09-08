@@ -1,7 +1,8 @@
 import React from 'react';
 import {
-  ScrollView, TouchableOpacity, View, StyleSheet
+  TouchableOpacity, View, StyleSheet
 } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 import { items } from '../../services/items';
 import Item from './Item';
@@ -28,13 +29,13 @@ class ItemTable extends React.PureComponent {
       );
     });
     return (
-      <View style={[styles.container, styles.centered]}>
-        <ScrollView tyle={[styles.centered]}>
-          <View style={[itemTableStyle.itemsWrapper, styles.centered]}>
-            {itemsToDisplay}
-          </View>
-          {children}
-        </ScrollView>
+      <View style={[styles.centered, style.tableContainer]}>
+        {/* <ScrollView tyle={[styles.centered]}> */}
+        <View style={[style.itemsWrapper, styles.centered]}>
+          {itemsToDisplay}
+        </View>
+        {children}
+        {/* </ScrollView> */}
       </View>
     );
   }
@@ -42,14 +43,16 @@ class ItemTable extends React.PureComponent {
 
 ItemTable.propTypes = propTypes;
 
-const itemTableStyle = StyleSheet.create({
+const style = StyleSheet.create({
   itemsWrapper: {
     flexWrap: 'wrap',
     flexDirection: 'row',
-    margin: 15,
+    // margin: 15,
     borderColor: 'white',
-    overflow: 'hidden',
-    backgroundColor: 'white'
+    overflow: 'scroll',
+    backgroundColor: 'white',
+  },
+  tableContainer: {
   }
 });
 

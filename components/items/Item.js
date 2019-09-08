@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import PropTypes from 'prop-types';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import { styles, imageSize } from '../../genericStyles';
 
 const propTypes = {

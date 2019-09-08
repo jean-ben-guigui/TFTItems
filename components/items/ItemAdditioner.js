@@ -3,6 +3,7 @@ import {
   View, StyleSheet
 } from 'react-native';
 import PropTypes from 'prop-types';
+import EStyleSheet from 'react-native-extended-stylesheet';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Item from './Item';
@@ -22,20 +23,20 @@ export default class ItemAdditioner extends React.PureComponent {
     const { item, onlyRecipe } = this.props;
     const { item1, item2 } = item.recipe;
     return (
-      <View style={[styles.centered, style.container, style.itemEquation]}>
+      <View style={[styles.centered, style.itemEquation]}>
         <View style={[styles.centered, styles.horizontal, style.itemAddition]}>
-          <View style={[styles.centered, styles.container]}>
+          <View style={[styles.centered, style.itemContainer]}>
             <Item source={item1.imageSource} />
           </View>
           <MaterialCommunityIcons name="plus" size={22} color="white" />
-          <View style={[styles.centered, styles.container]}>
+          <View style={[styles.centered, style.itemContainer]}>
             <Item source={item2.imageSource} />
           </View>
         </View>
         {onlyRecipe
           ? <View />
           : (
-            <View style={[styles.centered, styles.horizontal]} >
+            <View style={[styles.centered, styles.horizontal]}>
               {/* <MaterialCommunityIcons name="equal" size={22} color="white" /> */}
               <View style={[style.detail]}>
                 <ItemDetails item={item}>
@@ -57,21 +58,27 @@ ItemAdditioner.defaultProps = {
 };
 
 const style = StyleSheet.create({
-  itemAddition: {
-    padding: 10
-  },
+  // itemAddition: {
+  // paddingBottom: '1000%'
+  // },
   itemEquation: {
-    marginLeft: 40,
-    marginRight: 40,
-    paddingTop: 15,
-    paddingBottom: 15,
+    // marginLeft: 40,
+    // marginRight: 40,
+    padding: 15,
+    marginBottom: 15,
+    // paddingBottom: 15,
     // borderColor: 'white',
     borderRadius: 10,
     // borderWidth: 2,
-    overflow: 'hidden',
+    // overflow: 'hidden',
     backgroundColor: 'rgba(255, 255, 255, 0.12)',
+    // height: 'auto'
   },
   detail: {
 
+  },
+  itemContainer: {
+    marginLeft: '10%',
+    marginRight: '10%'
   }
 });

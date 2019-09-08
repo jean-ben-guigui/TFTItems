@@ -4,6 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import ItemDto from '../../services/items';
 import TftItemText from '../base/TftItemText';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import { styles, bigFontSize } from '../../genericStyles';
 
 const propTypes = {
