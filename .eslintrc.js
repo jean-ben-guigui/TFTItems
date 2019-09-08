@@ -10,7 +10,8 @@ module.exports = {
     'react/prop-types': 'off',
     'comma-dangle': 'off',
     'import/no-duplicates': 'off',
-    'no-nested-ternary': 'off'
+    'no-nested-ternary': 'off',
+    'react/require-default-props': 'off'
   },
   'globals': {
     "fetch": false

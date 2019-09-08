@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 import ItemDto from '../../services/items';
 import TftItemText from '../base/TftItemText';
-import EStyleSheet from 'react-native-extended-stylesheet';
 import { styles, bigFontSize } from '../../genericStyles';
 
 const propTypes = {
@@ -32,7 +32,7 @@ export default class ItemDetails extends React.PureComponent {
 
 ItemDetails.propTypes = propTypes;
 
-const style = StyleSheet.create({
+const style = EStyleSheet.create({
   title: {
     fontSize: bigFontSize,
     textAlign: 'center'
@@ -41,6 +41,6 @@ const style = StyleSheet.create({
     padding: 12
   },
   details: {
-    fontSize: 18
+    fontSize: '18rem',
   }
 });

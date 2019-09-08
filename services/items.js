@@ -79,7 +79,7 @@ export const items = {
   warmog: new Item('Warmog\'s Armor', 'Wearer regenerates 6% of missing health per second.', new Recipe(basicItems.Belt, basicItems.Belt), warmog),
   fm: new Item('Frozen Mallet', 'Wearer is also a Glacial', new Recipe(basicItems.Belt, basicItems.Spatula), fm),
   guinsoo: new Item('Guinsoo\'s Rageblade', 'Attacks grant 5% Attack Speed. Stacks infinitely.', new Recipe(basicItems.Rod, basicItems.Recurve), guinsoo),
-  rabadon: new Item('Rabadon\'s Deathcap', 'Wearer\'s Ability Damage increased by 50%.', new Recipe(basicItems.Rod, basicItems.rod), rabadon),
+  rabadon: new Item('Rabadon\'s Deathcap', 'Wearer\'s Ability Damage increased by 50%.', new Recipe(basicItems.Rod, basicItems.Rod), rabadon),
   Yuumi: new Item('Yuumi', 'Wearer is also a Sorcerer.', new Recipe(basicItems.Rod, basicItems.Spatula), Yuumi),
   ionic: new Item('Ionic Spark', 'Whenever an enemy casts a spell, they take 125 true damage.', new Recipe(basicItems.Rod, basicItems.Cloak), ionic),
   luden: new Item('Luden\'s Echo', 'Deal 180 splash damage on ability hit.', new Recipe(basicItems.Rod, basicItems.Tear), luden),

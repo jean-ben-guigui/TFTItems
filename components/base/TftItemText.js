@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 import { mainFont } from '../../genericStyles';
 
@@ -20,10 +21,10 @@ export default class TftItemText extends React.PureComponent {
 TftItemText.propTypes = propTypes;
 
 TftItemText.defaultProps = {
-  style: {}
+  style: { width: '100%' }
 };
 
-const textStyle = StyleSheet.create({
+const textStyle = EStyleSheet.create({
   text: {
     fontFamily: mainFont,
     color: 'white'

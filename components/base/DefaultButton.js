@@ -1,10 +1,12 @@
 import React from 'react';
 import {
   Animated,
-  StyleSheet,
+
   Text,
   TouchableOpacity
 } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
+
 import PropTypes from 'prop-types';
 import { styles } from '../../genericStyles';
 
@@ -58,7 +60,7 @@ class DefaultButton extends React.PureComponent {
   }
 }
 
-const styleSheet = StyleSheet.create({
+const styleSheet = EStyleSheet.create({
   defaultValidateButton: {
     backgroundColor: styles.color,
     borderRadius: 50,

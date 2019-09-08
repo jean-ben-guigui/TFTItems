@@ -1,5 +1,6 @@
 import React from 'react';
-import { ActivityIndicator, View, StyleSheet } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -21,7 +22,7 @@ class DumbLoader extends React.PureComponent {
   }
 }
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
   loader: {
     backgroundColor: 'transparent',
     minHeight: 50,

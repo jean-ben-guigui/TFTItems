@@ -1,13 +1,14 @@
 import { StyleSheet } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 export const mainColor = '#eba31e';
 export const mainFont = 'Papyrus';
-export const bigFontSize = 22;
+export const bigFontSize = '22rem';
 export const winningColor = 'gold';
-export const loosingColor = 'darkgray';
-export const imageSize = 50;
+export const loosingColor = '#b77b51';
+export const imageSize = '50rem';
 
-export const styles = StyleSheet.create({
+export const styles = EStyleSheet.create({
   container: {
     flex: 1,
   },

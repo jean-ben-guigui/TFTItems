@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, StyleSheet, Button, ScrollView
+  View, Button, SafeAreaView
 } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -8,9 +8,12 @@ import DumbLoader from '../base/DumbLoader';
 import ItemTable from './ItemTable';
 import ItemAdditioner from './ItemAdditioner';
 import Result from '../Results/Result';
+import WinCounterGradient from '../Results/WinCounterGradient';
 
 import * as itemService from '../../services/items';
 import TftItemText from '../base/TftItemText';
+import { winningNumber } from '../../constant';
+import TftButton from '../base/TftButton';
 import { styles } from '../../genericStyles';
 
 class MainScreen extends React.PureComponent {
@@ -24,6 +27,7 @@ class MainScreen extends React.PureComponent {
     this.state = {
       item: itemService.getRandomItem(),
       guess: this.guessEnum.notYet,
+      winCounter: 0
     };
   }
 
@@ -37,7 +41,7 @@ class MainScreen extends React.PureComponent {
   }
 
   render() {
-    const { item, guess } = this.state;
+    const { item, guess, winCounter } = this.state;
     if (!item) {
       return (
         <View style={[styles.container, styles.centered]}>
@@ -54,81 +58,101 @@ class MainScreen extends React.PureComponent {
       );
     }
     return (
-      <View style={[styles.centered, styles.container, style.mainContainer]}>
-        <View style={[styles.centered]}>
-          <View style={[styles.centered, style.headerTitle]}>
-            <TftItemText style={style.headerText}>
-              {
-                guess === this.guessEnum.fail
-                  ? 'Nope, the combination was in fact:'
-                  : guess === this.guessEnum.success
-                    ? 'The item combination was indeed:'
-                    : 'What item results of the following combination?'
-              }
-            </TftItemText>
-          </View>
-          <ItemAdditioner item={item} onlyRecipe={guess === this.guessEnum.notYet} />
-        </View>
-        {
-          guess === this.guessEnum.notYet
-            ? (
-
-              <ScrollView>
-                <ItemTable
-                  onPress={
-                    (itemName) => {
-                      this.setState(
-                        {
-                          guess: itemName === item.displayName
-                            ? this.guessEnum.success
-                            : this.guessEnum.fail
-                        }
-                      );
-                    }
+      <View style={[styles.centered, styles.container]}>
+        <SafeAreaView style={[styles.centered, styles.container]}>
+          <View style={[styles.centered, styles.container, style.mainContainer]}>
+            <View style={[styles.centered]}>
+              <View style={[styles.centered, style.headerTitle]}>
+                <TftItemText style={style.headerText}>
+                  {
+                    guess === this.guessEnum.fail
+                      ? 'Nope, the combination was in fact:'
+                      : guess === this.guessEnum.success
+                        ? 'The item combination was indeed:'
+                        : 'What item results of the following combination?'
                   }
-                />
-              </ScrollView>
-            )
-            : <Result success={guess === this.guessEnum.success} />
-        }
-        {/* <DefaultButton onPressFn={this.newItem} label="New item" disabled={false} /> */}
+                </TftItemText>
+              </View>
+              <ItemAdditioner item={item} onlyRecipe={guess === this.guessEnum.notYet} />
+            </View>
+            {
+              guess === this.guessEnum.notYet
+                ? (
+                  <ItemTable
+                    onPress={
+                      (itemName) => {
+                        this.setState(
+                          {
+                            guess: itemName === item.displayName
+                              ? this.guessEnum.success
+                              : this.guessEnum.fail,
+                            winCounter: itemName === item.displayName
+                              ? (winCounter >= winningNumber ? winCounter : winCounter + 1)
+                              : (winCounter <= -winningNumber ? winCounter : winCounter - 1),
+                          }
+                        );
+                      }
+                    }
+                  />
+                )
+                : <Result success={guess === this.guessEnum.success} />
+            }
+            {/* <DefaultButton onPressFn={this.newItem} label="New item" disabled={false} /> */}
+
+          </View>
+        </SafeAreaView>
         {
           guess === this.guessEnum.notYet
             ? <View />
             : (
-              <View style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}>
-                <Button
-                  onPress={() => this.newItem()}
-                  title="Try Again"
-                  color="#fff"
+
+              <WinCounterGradient styleFromParent={style.tryAgain} winNumber={winCounter}>
+                <TftButton
+                  label="New Item"
+                  onPressFn={() => this.newItem(item)}
+                  disabled={false}
+                  style={style.tryAgain}
                 />
-              </View>
+              </WinCounterGradient>
             )
         }
       </View>
-
     );
   }
 }
 
-const style = StyleSheet.create({
+const style = EStyleSheet.create({
+  globalContainer: {
+    width: '100%',
+    // flex: 1
+  },
   headerTitle: {
-    padding: 30,
+    paddingBottom: '20rem',
   },
   headerText: {
-    fontSize: 18,
+    fontSize: '20rem',
     textAlign: 'center',
+    '@media (min-width: 550)': {
+      fontSize: 30
+    },
   },
   middleContainer: {
-    paddingTop: 20,
-    paddingBottom: 10
+    paddingTop: '20rem',
+    paddingBottom: '10rem'
   },
   mainContainer: {
-    marginLeft: '2%',
-    marginRight: '2%'
+    paddingLeft: '3%',
+    paddingRight: '3%',
+    width: '100%'
   },
-  tableContainer: {
-    paddingTop: 20
+  tryAgain: {
+    position: 'absolute',
+    // backgroundColor: 'rgba(0,0,0,0.2)',
+    bottom: 0,
+    width: '100%',
+    height: '60rem',
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });
 

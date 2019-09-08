@@ -1,78 +1,56 @@
 import React from 'react';
 import {
-  Animated,
-  StyleSheet,
-  Text,
   TouchableOpacity
 } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 import { styles } from '../../genericStyles';
+import TftItemText from './TftItemText';
 
 const propTypes = {
   onPressFn: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
-  style: PropTypes.style,
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.any,
   label: PropTypes.string,
 };
 
-class DefaultButton extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    // Init du state
-    this.state = {
-      fadeAnim: props.disabled ? new Animated.Value(0.5) : new Animated.Value(1),
-    };
-  }
-
-  componentDidUpdate() {
-    const { disabled } = this.props;
-    const { fadeAnim } = this.state;
-    Animated.timing(
-      fadeAnim, // The animated value to drive
-      {
-        toValue: disabled, // Animate to opacity:
-        duration: 250 // Make it take a while
-      }
-    ).start(); // Starts the animation
-  }
-
+class TftButton extends React.PureComponent {
   render() {
     const {
       style, label, onPressFn, disabled
     } = this.props;
-    const { fadeAnim } = this.state;
 
     return (
-      <Animated.View style={[{ opacity: fadeAnim }, styles.container, style]}>
-        <TouchableOpacity
-          style={styles.container}
-          onPress={onPressFn}
-          activeOpacity={0.8}
-          underlayColor="#9dca76"
-          disabled={disabled}
-        >
-          <Text style={myButtonStyle.defaultValidateButtonText}>{label}</Text>
-        </TouchableOpacity>
-      </Animated.View>
+      <TouchableOpacity
+        style={[styles.container, styles.centered, style]}
+        onPress={onPressFn}
+        activeOpacity={0.8}
+        underlayColor="#9dca76"
+        disabled={disabled}
+      >
+        <TftItemText style={myButtonStyle.defaultValidateButtonText}>{label}</TftItemText>
+      </TouchableOpacity>
+
     );
   }
 }
 
-const myButtonStyle = StyleSheet.create({
+const myButtonStyle = EStyleSheet.create({
   defaultValidateButtonText: {
     textAlign: 'center',
     textAlignVertical: 'center',
-    color: 'white',
-    fontSize: 16,
+    color: '#175d73',
+    fontSize: '20rem',
     fontWeight: '600',
   }
 });
 
 
-DefaultButton.propTypes = propTypes;
-DefaultButton.defaultProps = {
+TftButton.propTypes = propTypes;
+TftButton.defaultProps = {
   label: '',
   style: ''
 };
 
-export default DefaultButton;
+export default TftButton;

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  TouchableOpacity, View, StyleSheet
+  TouchableOpacity, View
 } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
@@ -22,7 +22,7 @@ class ItemTable extends React.PureComponent {
         <TouchableOpacity
           key={item.displayName}
           onPress={() => onPress(item.displayName)}
-          style={{ margin: 3 }}
+          style={style.item}
         >
           <Item source={imageSource} />
         </TouchableOpacity>
@@ -43,16 +43,16 @@ class ItemTable extends React.PureComponent {
 
 ItemTable.propTypes = propTypes;
 
-const style = StyleSheet.create({
+const style = EStyleSheet.create({
   itemsWrapper: {
     flexWrap: 'wrap',
     flexDirection: 'row',
-    // margin: 15,
-    borderColor: 'white',
-    overflow: 'scroll',
     backgroundColor: 'white',
   },
   tableContainer: {
+  },
+  item: {
+    margin: '3rem'
   }
 });
 

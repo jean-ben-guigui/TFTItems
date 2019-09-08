@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, StyleSheet
+  View
 } from 'react-native';
 import PropTypes from 'prop-types';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -57,7 +57,7 @@ ItemAdditioner.defaultProps = {
   onlyRecipe: true
 };
 
-const style = StyleSheet.create({
+const style = EStyleSheet.create({
   // itemAddition: {
   // paddingBottom: '1000%'
   // },
