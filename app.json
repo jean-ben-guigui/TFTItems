@@ -25,6 +25,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "Mobile app designed to help TeamFight Tactics players memorize the different item combinations.",
+    "githubUrl": "https://github.com/jean-ben-guigui/TFTItems"
   }
 }
