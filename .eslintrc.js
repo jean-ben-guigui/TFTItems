@@ -11,7 +11,9 @@ module.exports = {
     'comma-dangle': 'off',
     'import/no-duplicates': 'off',
     'no-nested-ternary': 'off',
-    'react/require-default-props': 'off'
+    'react/require-default-props': 'off',
+    'import/prefer-default-export': 'off',
+    'no-underscore-dangle': 'off'
   },
   'globals': {
     "fetch": false

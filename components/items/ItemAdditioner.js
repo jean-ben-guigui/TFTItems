@@ -9,7 +9,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Item from './Item';
 
 import ItemDetails from './itemDetails';
-import ItemDto from '../../services/items';
+import ItemDto from '../../model/itemsDto';
 import { styles } from '../../genericStyles';
 
 

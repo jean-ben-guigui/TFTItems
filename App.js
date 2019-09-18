@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, SafeAreaView, Dimensions } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-import MainScreen from './components/items/MainScreen';
+import MainScreen from './screens/MainScreen';
 import { styles } from './genericStyles';
+import WeightedItems from './model/WeightedItems';
 
 export default class App extends React.PureComponent {
   constructor(props) {
@@ -12,6 +13,7 @@ export default class App extends React.PureComponent {
     const { width } = Dimensions.get('window');
     // const entireScreenWidth = Math.sqrt(height ** 2 + width ** 2);
     EStyleSheet.build({ $rem: width / 380, $imageSize: '1rem' });
+    this.items = new WeightedItems();
   }
 
   render() {
@@ -29,13 +31,9 @@ export default class App extends React.PureComponent {
         end={[1, 1]}
       >
         <View style={[styles.centered, styles.container]}>
-          {/* <ScrollView tyle={[styles.centered]}> */}
-          <MainScreen />
-          {/* </ScrollView> */}
+          <MainScreen items={this.items} />
         </View>
-        {/* </SafeAreaView> */}
-      </LinearGradient >
+      </LinearGradient>
     );
   }
-
 }

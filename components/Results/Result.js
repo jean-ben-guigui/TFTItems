@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import TftItemText from '../base/TftItemText';
-import { winningQuotesArray, loosingQuotesArray } from '../../constant';
+import { winningQuotesArray, loosingQuotesArray } from '../../constants';
 import { winningColor, styles, loosingColor } from '../../genericStyles';
 
 

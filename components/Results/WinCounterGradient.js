@@ -3,7 +3,7 @@ import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import PropTypes from 'prop-types';
 
-import { winningNumber } from '../../constant';
+import { winningNumber } from '../../constants';
 import { winningColor, loosingColor } from '../../genericStyles';
 
 

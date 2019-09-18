@@ -3,7 +3,7 @@ import React from 'react';
 import { View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
-import ItemDto from '../../services/items';
+import ItemDto from '../../model/itemsDto';
 import TftItemText from '../base/TftItemText';
 import { styles, bigFontSize } from '../../genericStyles';
 

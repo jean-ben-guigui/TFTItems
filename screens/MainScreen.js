@@ -3,20 +3,23 @@ import {
   View, Button, SafeAreaView
 } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import propTypes from 'prop-types';
 
-import DumbLoader from '../base/DumbLoader';
-import ItemTable from './ItemTable';
-import ItemAdditioner from './ItemAdditioner';
-import Result from '../Results/Result';
-import WinCounterGradient from '../Results/WinCounterGradient';
+import DumbLoader from '../components/base/DumbLoader';
+import ItemTable from '../components/items/ItemTable';
+import ItemAdditioner from '../components/items/ItemAdditioner';
+import Result from '../components/Results/Result';
+import WinCounterGradient from '../components/Results/WinCounterGradient';
 
-import * as itemService from '../../services/items';
-import TftItemText from '../base/TftItemText';
-import { winningNumber } from '../../constant';
-import TftButton from '../base/TftButton';
-import { styles } from '../../genericStyles';
+import WeightedItems from '../model/WeightedItems';
+import { itemsDto } from '../model/itemsDto';
+import TftItemText from '../components/base/TftItemText';
+import { winningNumber } from '../constants';
+import TftButton from '../components/base/TftButton';
+import { styles } from '../genericStyles';
+import { getKeyByValue } from '../helper';
 
-class MainScreen extends React.PureComponent {
+export default class MainScreen extends React.PureComponent {
   constructor(props) {
     super(props);
     this.guessEnum = {
@@ -24,31 +27,53 @@ class MainScreen extends React.PureComponent {
       fail: 1,
       success: 2
     };
+    const { items } = this.props;
     this.state = {
-      item: itemService.getRandomItem(),
+      item: false,
       guess: this.guessEnum.notYet,
       winCounter: 0
     };
+    items.initialize().then(() => {
+      items.getRandomWeightedItem().then((randomItem) => {
+        this.setState(() => ({
+          item: randomItem,
+          guess: this.guessEnum.notYet,
+        }));
+      });
+    });
   }
 
   newItem() {
     const { item } = this.state;
+    const { items } = this.props;
     if (item) {
-      this.setState({ item: itemService.getRandomItem(item), guess: this.guessEnum.notYet });
+      items.getRandomWeightedItem(item).then((randomItem) => {
+        this.setState({
+          item: randomItem,
+          guess: this.guessEnum.notYet
+        });
+      });
     } else {
-      this.setState({ item: itemService.getRandomItem(), guess: this.guessEnum.notYet });
+      items.getRandomWeightedItem().then((randomItem) => {
+        this.setState({
+          item: randomItem,
+          guess: this.guessEnum.notYet
+        });
+      });
     }
   }
 
   render() {
+    // const item = undefined;
     const { item, guess, winCounter } = this.state;
+    const { items } = this.props;
     if (!item) {
       return (
         <View style={[styles.container, styles.centered]}>
           <DumbLoader />
           <View style={styles.container}>
             <Button
-              onPress={() => this.newItem(item)}
+              onPress={() => this.newItem()}
               title="New item"
               color="#841584"
               accessibilityLabel="Bien"
@@ -81,16 +106,24 @@ class MainScreen extends React.PureComponent {
                   <ItemTable
                     onPress={
                       (itemName) => {
-                        this.setState(
-                          {
-                            guess: itemName === item.displayName
-                              ? this.guessEnum.success
-                              : this.guessEnum.fail,
-                            winCounter: itemName === item.displayName
-                              ? (winCounter >= winningNumber ? winCounter : winCounter + 1)
-                              : (winCounter <= -winningNumber ? winCounter : winCounter - 1),
-                          }
-                        );
+                        const itemKey = getKeyByValue(itemsDto, item);
+                        if (itemName === item.displayName) {
+                          items.onFoundItem(itemKey);
+                          this.setState(
+                            {
+                              guess: this.guessEnum.success,
+                              winCounter: winCounter >= winningNumber ? winCounter : winCounter + 1
+                            }
+                          );
+                        } else {
+                          items.onFailedItem(itemKey);
+                          this.setState(
+                            {
+                              guess: this.guessEnum.fail,
+                              winCounter: winCounter <= -winningNumber ? winCounter : winCounter - 1
+                            }
+                          );
+                        }
                       }
                     }
                   />
@@ -120,6 +153,10 @@ class MainScreen extends React.PureComponent {
     );
   }
 }
+
+MainScreen.propTypes = {
+  items: propTypes.instanceOf(WeightedItems).isRequired
+};
 
 const style = EStyleSheet.create({
   globalContainer: {
@@ -155,5 +192,3 @@ const style = EStyleSheet.create({
     justifyContent: 'center',
   }
 });
-
-export default MainScreen;

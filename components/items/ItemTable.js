@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
-import { items } from '../../services/items';
+import { itemsDto } from '../../model/itemsDto';
 import Item from './Item';
 import { styles } from '../../genericStyles';
 
@@ -16,7 +16,7 @@ class ItemTable extends React.PureComponent {
   render() {
     const { onPress, children } = this.props;
     const itemsToDisplay = [];
-    Object.values(items).forEach((item) => {
+    Object.values(itemsDto).forEach((item) => {
       const { imageSource } = item;
       itemsToDisplay.push(
         <TouchableOpacity
