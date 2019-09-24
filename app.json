@@ -10,7 +10,7 @@
       "web"
     ],
     "version": "1.0.0",
-    "orientation": "default",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
@@ -23,8 +23,17 @@
       "**/*"
     ],
     "ios": {
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
+    "android": {
+      "permissions": [],
+      "versionCode": 1
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content"
+    },
+    "primatryColor": "#A3CB38",
     "description": "Mobile app designed to help TeamFight Tactics players memorize the different item combinations.",
     "githubUrl": "https://github.com/jean-ben-guigui/TFTItems"
   }

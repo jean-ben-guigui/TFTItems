@@ -13,7 +13,8 @@ module.exports = {
     'no-nested-ternary': 'off',
     'react/require-default-props': 'off',
     'import/prefer-default-export': 'off',
-    'no-underscore-dangle': 'off'
+    'no-underscore-dangle': 'off',
+    'import/no-extraneous-dependencies': 'off'
   },
   'globals': {
     "fetch": false

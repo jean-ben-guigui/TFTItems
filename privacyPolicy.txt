@@ -1,0 +1,6 @@
+Privacy policy:
+
+TFTItems is an application which do not process personal data.
+The only data that may be collected are data related to crash from your app. That kind of data is anonymous.
+
+Any question should be adressed to duver.arthur@gmail.com
