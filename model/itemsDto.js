@@ -38,7 +38,15 @@ const fon = require('../assets/images/ForceOfNature.png');
 const Darkin = require('../assets/images/Darkin.png');
 const seraph = require('../assets/images/SeraphsEmbrace.png');
 const statikk = require('../assets/images/StatikkShiv.png');
-
+const crossbow = require('../assets/images/RepeatingCrossbow.png');
+const jg = require('../assets/images/JeweledGauntlet.png');
+const ig = require('../assets/images/IcebornGauntlet.png');
+const quicksilver = require('../assets/images/Quicksilver.png');
+const trapClaw = require('../assets/images/TrapClaw.png');
+const tg = require('../assets/images/ThiefsGloves.png');
+const mittens = require('../assets/images/Mittens.png');
+const deathblade = require('../assets/images/Deathblade.png');
+const gs = require('../assets/images/GiantSlayer.png');
 
 /**
  *
@@ -57,15 +65,14 @@ export default class ItemDto {
 }
 
 export const itemsDto = {
-  IE: new ItemDto('Infinity edge', 'Critical Strikes deal +200% damage.', new Recipe(basicItems.BF, basicItems.BF), ie),
-  DivineSword: new ItemDto('Sword of the divine', 'Every 1s gain a 7% chance to gain 100% Critical Strike.', new Recipe(basicItems.BF, basicItems.Recurve), divine),
+  IE: new ItemDto('Infinity edge', 'Critical Strikes deal +200% damage.', new Recipe(basicItems.Gloves, basicItems.BF), ie),
   Gunblade: new ItemDto('Hextech Gunblade', ' Heal for 25% of all damage dealt.', new Recipe(basicItems.BF, basicItems.Rod), gunblade),
   Shojin: new ItemDto('Spear of Shojin', 'After casting, gain 15% of max mana per attack.', new Recipe(basicItems.BF, basicItems.Tear), shojin),
   GA: new ItemDto('Guardian Angel', 'Wearer revives with 500 Health after a 2 sec delay.', new Recipe(basicItems.BF, basicItems.Vest), ga),
   BT: new ItemDto('Bloodthirster', 'Attacks heal for 40% of damage.', new Recipe(basicItems.BF, basicItems.Cloak), bt),
   Zeke: new ItemDto('Zeke\'s Herald', 'On start of combat, allies 2 spaces to the left and right gain +15% Attack Speed.', new Recipe(basicItems.BF, basicItems.Belt), zeke),
   youmuu: new ItemDto('Youmuu\'s Ghostblade', 'Wearer is also an Assassin.', new Recipe(basicItems.BF, basicItems.Spatula), youmuu),
-  FH: new ItemDto('Frozen Heart', 'Adjacent enemies Attack Speed is 25% Slower.', new Recipe(basicItems.Vest, basicItems.Tear), fh),
+  FH: new ItemDto('Frozen Heart', 'Adjacent enemies Attack Speed is 35% Slower.', new Recipe(basicItems.Vest, basicItems.Tear), fh),
   locket: new ItemDto('Locket of the Iron Solari', 'On start of combat, allies two spaces to the left and right gain a shield of 250 for 6 seconds.', new Recipe(basicItems.Vest, basicItems.Rod), locket),
   thornmail: new ItemDto('Thornmail', 'Reflect 100% of mitigated damage taken from attacks as magic damage.', new Recipe(basicItems.Vest, basicItems.Vest), thornmail),
   pd: new ItemDto('Phantom Dancer', 'Wearer dodges all Critical Strikes.', new Recipe(basicItems.Vest, basicItems.Recurve), pd),
@@ -92,7 +99,16 @@ export const itemsDto = {
   botrk: new ItemDto('Blade of the Ruined King', 'Wearer is also a Blademaster.', new Recipe(basicItems.Recurve, basicItems.Spatula), botrk),
   fon: new ItemDto('Force of Nature', 'Gain +1 team size.', new Recipe(basicItems.Spatula, basicItems.Spatula), fon),
   Darkin: new ItemDto('Darkin', 'Wearer is also a Demon.', new Recipe(basicItems.Spatula, basicItems.Tear), Darkin),
-  seraph: new ItemDto('Seraph\'s Embrace', 'Regain 20 mana each time a spell is cast.', new Recipe(basicItems.Tear, basicItems.Tear), seraph)
+  seraph: new ItemDto('Seraph\'s Embrace', 'Regain 20 mana each time a spell is cast.', new Recipe(basicItems.Tear, basicItems.Tear), seraph),
+  crossBow: new ItemDto('Repeating Crossbow', 'On death, this jumps to an allied champion and grants an additional 20% Attack Speed & Critical Strike chance.', new Recipe(basicItems.Gloves, basicItems.BF), crossbow),
+  jg: new ItemDto('Jeweled Gauntlet', 'Your spells can crit', new Recipe(basicItems.Gloves, basicItems.Rod), jg),
+  ig: new ItemDto('Iceborn Gauntlet', 'On dodge, create an expandable zone that lowers Attack Speed by 35%.', new Recipe(basicItems.Gloves, basicItems.Vest), ig),
+  quicksilver: new ItemDto('Quicksilver', 'When CC’d, cleanse the CC. 5 second cooldown.', new Recipe(basicItems.Gloves, basicItems.Cloak), quicksilver),
+  trapClaw: new ItemDto('Trap Claw', 'On combat begin, gain a spell shield. When it breaks, stun the champion who broke the shield for 5 seconds.', new Recipe(basicItems.Gloves, basicItems.Belt), trapClaw),
+  tg: new ItemDto('Thief\'s Gloves', 'This item takes all three item slots. On round begin, copy two random items.', new Recipe(basicItems.Gloves, basicItems.Gloves), tg),
+  mittens: new ItemDto('Mittens', 'Wearer is also a Yordle', new Recipe(basicItems.Gloves, basicItems.Spatula), mittens),
+  deathblade: new ItemDto('Deathblade', 'On a kill or assist, gain an additional 15 Attack Damage until end of combat (Stacks infinitely).', new Recipe(basicItems.BF, basicItems.BF), deathblade),
+  gs: new ItemDto('Giant Slayer', 'Attacks deal an additional 5% enemy max Health as True Damage.', new Recipe(basicItems.BF, basicItems.Recurve), gs),
 };
 
 

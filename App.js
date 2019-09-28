@@ -76,9 +76,9 @@ async function _loadAssetsAsync() {
 export default class App extends React.PureComponent {
   constructor(props) {
     super(props);
-    const { width } = Dimensions.get('window');
+    const { width, height } = Dimensions.get('window');
     // const entireScreenWidth = Math.sqrt(height ** 2 + width ** 2);
-    EStyleSheet.build({ $rem: width / 380, $imageSize: '1rem' });
+    EStyleSheet.build({ $rem: (width * height) / 250000, $imageSize: '1rem' });
     this.items = new WeightedItems();
     this.state = {
       isReady: false,

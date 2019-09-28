@@ -3,7 +3,7 @@
     "name": "TFTitems",
     "slug": "TFTitems",
     "privacy": "public",
-    "sdkVersion": "34.0.0",
+    "sdkVersion": "35.0.0",
     "platforms": [
       "ios",
       "android",
@@ -33,7 +33,7 @@
     "androidStatusBar": {
       "barStyle": "light-content"
     },
-    "primatryColor": "#A3CB38",
+    "primaryColor": "#A3CB38",
     "description": "Mobile app designed to help TeamFight Tactics players memorize the different item combinations.",
     "githubUrl": "https://github.com/jean-ben-guigui/TFTItems"
   }

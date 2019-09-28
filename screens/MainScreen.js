@@ -70,15 +70,17 @@ export default class MainScreen extends React.PureComponent {
     if (!item) {
       return (
         <View style={[styles.container, styles.centered]}>
-          <DumbLoader />
-          <View style={styles.container}>
-            <Button
-              onPress={() => this.newItem()}
-              title="New item"
-              color="#841584"
-              accessibilityLabel="Bien"
-            />
-          </View>
+          <SafeAreaView style={[styles.centered, styles.container]}>
+            <DumbLoader />
+            <View style={styles.container}>
+              <Button
+                onPress={() => this.newItem()}
+                title="New item"
+                color="#841584"
+                accessibilityLabel="Bien"
+              />
+            </View>
+          </SafeAreaView>
         </View>
       );
     }
