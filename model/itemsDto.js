@@ -3,7 +3,6 @@ import { basicItems } from './BasicItem';
 import Recipe from './Recipe';
 
 const ie = require('../assets/images/InfinityEdge.png');
-const divine = require('../assets/images/SwordOfTheDivine.png');
 const gunblade = require('../assets/images/HextechGunblade.png');
 const shojin = require('../assets/images/SpearOfShojin.png');
 const ga = require('../assets/images/GuardianAngel.png');
@@ -65,7 +64,7 @@ export default class ItemDto {
 }
 
 export const itemsDto = {
-  IE: new ItemDto('Infinity edge', 'Critical Strikes deal +200% damage.', new Recipe(basicItems.Gloves, basicItems.BF), ie),
+  IE: new ItemDto('Infinity edge', 'Critical Strikes deal +150% damage.', new Recipe(basicItems.Gloves, basicItems.BF), ie),
   Gunblade: new ItemDto('Hextech Gunblade', ' Heal for 25% of all damage dealt.', new Recipe(basicItems.BF, basicItems.Rod), gunblade),
   Shojin: new ItemDto('Spear of Shojin', 'After casting, gain 15% of max mana per attack.', new Recipe(basicItems.BF, basicItems.Tear), shojin),
   GA: new ItemDto('Guardian Angel', 'Wearer revives with 500 Health after a 2 sec delay.', new Recipe(basicItems.BF, basicItems.Vest), ga),
