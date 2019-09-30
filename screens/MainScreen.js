@@ -114,10 +114,14 @@ export default class MainScreen extends React.PureComponent {
               </TftItemText>
             </View>
             <View style={[styles.container, styles.row]}>
-              <View style={[styles.container, styles.wrap, styles.row]}>
-                <ItemAdditioner item={item} onlyRecipe={guess === this.guessEnum.notYet} />
+              <View style={[styles.container, styles.wrap, styles.row, style.centered]}>
+                <ItemAdditioner
+                  item={item}
+                  onlyRecipe={guess === this.guessEnum.notYet}
+                  vertical={false}
+                />
               </View>
-              <View style={[styles.container, styles.centered, style.horizontalResult]}>
+              <View style={[styles.container, styles.centered, style.horizontalResult, styles.half]}>
                 <Result success={guess === this.guessEnum.success} />
               </View>
             </View>

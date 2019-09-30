@@ -16,14 +16,21 @@ import { styles } from '../../genericStyles';
 const propTypes = {
   item: PropTypes.instanceOf(ItemDto).isRequired,
   onlyRecipe: PropTypes.bool,
+  vertical: PropTypes.bool,
 };
+
 
 export default class ItemAdditioner extends React.PureComponent {
   render() {
-    const { item, onlyRecipe } = this.props;
+    const { item, onlyRecipe, vertical } = this.props;
     const { item1, item2 } = item.recipe;
+    let mainContainerStyle = [styles.centered, style.itemEquation, styles.container0];
+    if (!vertical) {
+      mainContainerStyle = [...mainContainerStyle, styles.grow];
+    }
+
     return (
-      <View style={[styles.centered, style.itemEquation, styles.container0]}>
+      <View style={mainContainerStyle}>
         <View style={[styles.centered, styles.horizontal, styles.container0]}>
           <View style={[styles.centered, style.itemContainer]}>
             <Item source={item1.imageSource} />
@@ -52,25 +59,16 @@ export default class ItemAdditioner extends React.PureComponent {
 
 ItemAdditioner.propTypes = propTypes;
 ItemAdditioner.defaultProps = {
-  onlyRecipe: true
+  onlyRecipe: true,
+  vertical: true
 };
 
 const style = EStyleSheet.create({
-  // itemAddition: {
-  // paddingBottom: '1000%'
-  // },
   itemEquation: {
-    // marginLeft: 40,
-    // marginRight: 40,
     padding: '15rem',
     marginBottom: 15,
-    // paddingBottom: 15,
-    // borderColor: 'white',
     borderRadius: 10,
-    // borderWidth: 2,
-    // overflow: 'hidden',
     backgroundColor: 'rgba(255, 255, 255, 0.12)',
-    // height: 'auto'
   },
   detail: {
 
