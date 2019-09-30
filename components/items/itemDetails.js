@@ -64,17 +64,9 @@ export default class ItemDetails extends React.PureComponent {
         <View style={[style.textContainer, styles.centered]}>
           <TftItemText style={style.title}>{item.displayName}</TftItemText>
         </View>
+        {children}
         <View style={[style.textContainer, styles.centered]}>
-          {children}
-        </View>
-        <View style={{
-          flexWrap: 'wrap',
-          flexShrink: 1
-        }}
-        >
-          <View style={[style.textContainer, styles.centered, styles.shrink]}>
-            <TftItemText>{item.description}</TftItemText>
-          </View>
+          <TftItemText style={style.details}>{item.description}</TftItemText>
         </View>
       </View>
     );
