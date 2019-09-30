@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, SafeAreaView, Dimensions
+  View, Dimensions
 } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import propTypes from 'prop-types';
@@ -16,7 +16,7 @@ import { itemsDto } from '../model/itemsDto';
 import TftItemText from '../components/base/TftItemText';
 import { winningNumber } from '../constants';
 import TftButton from '../components/base/TftButton';
-import { styles, fantasyFont } from '../genericStyles';
+import { styles } from '../genericStyles';
 import { getKeyByValue } from '../helper';
 
 export default class MainScreen extends React.PureComponent {
@@ -28,11 +28,13 @@ export default class MainScreen extends React.PureComponent {
       success: 2
     };
     const { items } = this.props;
+    const { height, width } = Dimensions.get('window');
     this.state = {
+      height,
+      width,
       item: false,
       guess: this.guessEnum.notYet,
-      winCounter: 0,
-      largeWindow: Dimensions.get('window').width >= 550
+      winCounter: 0
     };
     items.initialize().then(() => {
       items.getRandomWeightedItem().then((randomItem) => {
@@ -40,6 +42,16 @@ export default class MainScreen extends React.PureComponent {
           item: randomItem,
           guess: this.guessEnum.notYet,
         }));
+      });
+    });
+  }
+
+  componentDidMount() {
+    this.dimensionListener = Dimensions.addEventListener('change', (event) => {
+      const { width, height } = event.window;
+      this.setState({
+        width,
+        height
       });
     });
   }
@@ -71,15 +83,16 @@ export default class MainScreen extends React.PureComponent {
   render() {
     // const item = undefined;
     const {
-      item, guess, winCounter, largeWindow
+      item, guess, winCounter, height, width
     } = this.state;
     const { items } = this.props;
+    const landscape = height < width;
     if (!item) {
       return (
         <LoaderScreen reload={() => this.newItem()} />
       );
     }
-    if (largeWindow && guess !== this.guessEnum.notYet) {
+    if (landscape && guess !== this.guessEnum.notYet) {
       return (
         <View style={[styles.centered, styles.container]}>
           <View style={[
@@ -101,7 +114,7 @@ export default class MainScreen extends React.PureComponent {
               </TftItemText>
             </View>
             <View style={[styles.container, styles.row]}>
-              <View style={[styles.container, styles.wrap, styles.column]}>
+              <View style={[styles.container, styles.wrap, styles.row]}>
                 <ItemAdditioner item={item} onlyRecipe={guess === this.guessEnum.notYet} />
               </View>
               <View style={[styles.container, styles.centered, style.horizontalResult]}>
@@ -117,7 +130,7 @@ export default class MainScreen extends React.PureComponent {
                     label="New Item"
                     onPressFn={() => this.newItem(item)}
                     disabled={false}
-                    style={style.tryAgain}
+                    style={[style.tryAgain, { width: Dimensions.get('window').width + 200 }]}
                   />
                 </WinCounterGradient>
               )
@@ -126,7 +139,7 @@ export default class MainScreen extends React.PureComponent {
       );
     }
     return (
-      <View style={[styles.centered, styles.container]} >
+      <View style={[styles.centered, styles.container]}>
         <View style={[
           styles.spaceAround,
           styles.centered,
@@ -190,7 +203,7 @@ export default class MainScreen extends React.PureComponent {
                   label="New Item"
                   onPressFn={() => this.newItem(item)}
                   disabled={false}
-                  style={style.tryAgain}
+                  style={[style.tryAgain, { width: Dimensions.get('window').width + 200 }]}
                 />
               </WinCounterGradient>
             )
@@ -234,7 +247,7 @@ const style = EStyleSheet.create({
     // position: 'absolute',
     // backgroundColor: 'rgba(0,0,0,0.2)',
     bottom: 0,
-    width: Dimensions.get('window').width,
+
     height: '60rem',
     alignItems: 'center',
     justifyContent: 'center',

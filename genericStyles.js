@@ -18,6 +18,9 @@ export const styles = EStyleSheet.create({
   row: {
     flexDirection: 'row',
   },
+  rowReverse: {
+    flexDirection: 'row-reverse',
+  },
   column: {
     flexDirection: 'column',
   },

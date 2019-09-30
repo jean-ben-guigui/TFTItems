@@ -99,7 +99,7 @@ export const itemsDto = {
   fon: new ItemDto('Force of Nature', 'Gain +1 team size.', new Recipe(basicItems.Spatula, basicItems.Spatula), fon),
   Darkin: new ItemDto('Darkin', 'Wearer is also a Demon.', new Recipe(basicItems.Spatula, basicItems.Tear), Darkin),
   seraph: new ItemDto('Seraph\'s Embrace', 'Regain 20 mana each time a spell is cast.', new Recipe(basicItems.Tear, basicItems.Tear), seraph),
-  crossBow: new ItemDto('Repeating Crossbow', 'On death, this jumps to an allied champion and grants an additional 20% Attack Speed & Critical Strike chance.', new Recipe(basicItems.Gloves, basicItems.BF), crossbow),
+  crossBow: new ItemDto('Repeating Crossbow', 'On death, this jumps to an allied champion and grants an additional 20% Attack Speed & Critical Strike chance.', new Recipe(basicItems.Gloves, basicItems.Recurve), crossbow),
   jg: new ItemDto('Jeweled Gauntlet', 'Your spells can crit', new Recipe(basicItems.Gloves, basicItems.Rod), jg),
   ig: new ItemDto('Iceborn Gauntlet', 'On dodge, create an expandable zone that lowers Attack Speed by 35%.', new Recipe(basicItems.Gloves, basicItems.Vest), ig),
   quicksilver: new ItemDto('Quicksilver', 'When CC’d, cleanse the CC. 5 second cooldown.', new Recipe(basicItems.Gloves, basicItems.Cloak), quicksilver),
