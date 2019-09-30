@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  TouchableOpacity, View
+  TouchableOpacity, View, ScrollView
 } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
@@ -29,14 +29,14 @@ class ItemTable extends React.PureComponent {
       );
     });
     return (
-      <View style={[styles.centered, style.tableContainer]}>
-        {/* <ScrollView tyle={[styles.centered]}> */}
+      // <View style={[styles.centered, style.tableContainer]}>
+      <ScrollView tyle={[styles.container, styles.centered, style.tableContainer]}>
         <View style={[style.itemsWrapper, styles.centered]}>
           {itemsToDisplay}
         </View>
         {children}
-        {/* </ScrollView> */}
-      </View>
+      </ScrollView>
+      // </View>
     );
   }
 }
@@ -50,6 +50,8 @@ const style = EStyleSheet.create({
     backgroundColor: 'white',
   },
   tableContainer: {
+    flex: 1,
+    backgroundColor: 'red'
   },
   item: {
     margin: '3rem'

@@ -3,6 +3,7 @@ import { Image } from 'react-native';
 import PropTypes from 'prop-types';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { imageSize } from '../../genericStyles';
+import { maxWeight } from '../../constants';
 
 const propTypes = {
   source: PropTypes.node.isRequired
@@ -31,6 +32,8 @@ const style = EStyleSheet.create({
   image: {
     width: imageSize,
     height: imageSize,
-    borderRadius: 10
+    borderRadius: 10,
+    maxWidth: 100,
+    maxHeight: 100
   }
 });

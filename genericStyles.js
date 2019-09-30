@@ -1,15 +1,25 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 export const mainColor = '#eba31e';
-export const mainFont = 'Papyrus';
+export const mainFont = 'open-sans';
+export const fantasyFont = 'Papyrus';
 export const bigFontSize = '22rem';
-export const winningColor = 'gold';
-export const loosingColor = '#b77b51';
+export const winningColor = '#8ec778';
+export const loosingColor = '#fed268';
 export const imageSize = '50rem';
 
 export const styles = EStyleSheet.create({
   container: {
     flex: 1,
+  },
+  container0: {
+    flex: 0,
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  column: {
+    flexDirection: 'column',
   },
   centered: {
     backgroundColor: 'transparent',
@@ -25,4 +35,19 @@ export const styles = EStyleSheet.create({
   double: {
     flex: 2,
   },
+  shrink: {
+    flexShrink: 1
+  },
+  grow: {
+    flexGrow: 1
+  },
+  spaceAround: {
+    justifyContent: 'space-around'
+  },
+  spaceEven: {
+    justifyContent: 'space-evenly',
+  },
+  wrap: {
+    flexWrap: 'wrap'
+  }
 });

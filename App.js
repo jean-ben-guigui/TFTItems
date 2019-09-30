@@ -1,6 +1,9 @@
 /* eslint-disable global-require */
 import React from 'react';
-import { View, Dimensions, Image } from 'react-native';
+import {
+  View, Dimensions, Image,
+  SafeAreaView
+} from 'react-native';
 import { AppLoading } from 'expo';
 import { LinearGradient } from 'expo-linear-gradient';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -21,8 +24,12 @@ function cacheImages(images) {
   });
 }
 
+function cacheFonts(fonts) {
+  return fonts.map((font) => Font.loadAsync(font));
+}
+
 async function _loadAssetsAsync() {
-  await cacheImages([
+  const imageAssets = cacheImages([
     require('./assets/images/recurve.png'),
     require('./assets/images/TearOfTheGoddess.png'),
     require('./assets/images/BFSword.png'),
@@ -71,6 +78,8 @@ async function _loadAssetsAsync() {
   ]);
 
   // const fontAssets = cacheFonts(['Papyrus']);
+  const fontAssets = Font.loadAsync({ 'open-sans': require('./assets/fonts/OpenSans-Regular.ttf') });
+  await Promise.all([imageAssets, fontAssets]);
 }
 
 export default class App extends React.PureComponent {
@@ -102,9 +111,9 @@ export default class App extends React.PureComponent {
       <LinearGradient
         colors={
           [
-            '#6c1374',
-            '#175d73',
-            // '#c166d8',
+            '#dc2f6a',
+            '#9123b5',
+            '#4b61cc',
           ]
         }
         style={[styles.centered, styles.container]}
@@ -112,7 +121,9 @@ export default class App extends React.PureComponent {
         end={[1, 1]}
       >
         <View style={[styles.centered, styles.container]}>
-          <MainScreen items={this.items} />
+          <SafeAreaView style={[styles.centered, styles.container]}>
+            <MainScreen items={this.items} />
+          </SafeAreaView>
         </View>
       </LinearGradient>
     );

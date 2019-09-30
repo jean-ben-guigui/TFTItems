@@ -27,6 +27,6 @@ TftItemText.defaultProps = {
 const textStyle = EStyleSheet.create({
   text: {
     fontFamily: mainFont,
-    color: 'white'
+    color: 'white',
   }
 });

@@ -19,12 +19,14 @@ export default class ItemDetails extends React.PureComponent {
         <View style={[style.textContainer, styles.centered]}>
           <TftItemText style={style.title}>{item.displayName}</TftItemText>
         </View>
-        {children}
-        <View style={style.textContainer}>
-          <View style={[style.textContainer, styles.centered]}>
-            <TftItemText style={style.details}>{item.description}</TftItemText>
-          </View>
+        <View style={[style.textContainer, styles.centered]}>
+          {children}
         </View>
+        {/* <View style={{ flexDirection: 'row', flex: 1, flexWrap: 'wrap', flexShrink: 1 }}> */}
+        <View style={[style.textContainer, styles.centered]}>
+          <TftItemText>{item.description}</TftItemText>
+        </View>
+        {/* </View> */}
       </View>
     );
   }
@@ -38,7 +40,7 @@ const style = EStyleSheet.create({
     textAlign: 'center'
   },
   textContainer: {
-    padding: 12
+    padding: 12,
   },
   details: {
     fontSize: '18rem',

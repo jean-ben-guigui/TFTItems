@@ -22,8 +22,6 @@ export default class Result extends React.PureComponent {
 
     const arrayOfQuotes = success ? winningQuotesArray : loosingQuotesArray;
     const firstLine = success
-
-
       ? <Ionicons name="ios-thumbs-up" size={40} color={winningColor} />
       : <MaterialCommunityIcons name="emoticon-poop" size={40} color={loosingColor} />;
     const secondLine = success
@@ -33,10 +31,8 @@ export default class Result extends React.PureComponent {
     return (
       <View style={[styles.centered]}>
         <View style={[styles.centered]}>
-          <View style={[styles.centered]}>
-            {firstLine}
-            <TftItemText style={[style.friendlyText, styleQuote]}>{secondLine}</TftItemText>
-          </View>
+          {firstLine}
+          <TftItemText style={[style.friendlyText, styleQuote]}>{secondLine}</TftItemText>
         </View>
       </View>
     );
