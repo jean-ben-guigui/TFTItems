@@ -33,7 +33,9 @@ const style = EStyleSheet.create({
     width: imageSize,
     height: imageSize,
     borderRadius: 10,
-    maxWidth: 100,
-    maxHeight: 100
+    '@media (min-width: 640)': {
+      width: 80,
+      height: 80,
+    },
   }
 });

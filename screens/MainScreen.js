@@ -17,7 +17,7 @@ import TftItemText from '../components/base/TftItemText';
 import { winningNumber } from '../constants';
 import TftButton from '../components/base/TftButton';
 import { styles } from '../genericStyles';
-import { getKeyByValue } from '../helper';
+import { getKeyByValue } from '../helpers/objectHelper';
 
 export default class MainScreen extends React.PureComponent {
   constructor(props) {
@@ -47,12 +47,18 @@ export default class MainScreen extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.dimensionListener = Dimensions.addEventListener('change', (event) => {
-      const { width, height } = event.window;
-      this.setState({
-        width,
-        height
-      });
+    this.dimensionListener = Dimensions.addEventListener('change', this.onChangeDimension);
+  }
+
+  componentWillUnmount() {
+    Dimensions.removeEventListener('change', this.onChangeDimension);
+  }
+
+  onChangeDimension = (event) => {
+    const { width, height } = event.window;
+    this.setState({
+      width,
+      height
     });
   }
 
@@ -75,10 +81,6 @@ export default class MainScreen extends React.PureComponent {
       });
     }
   }
-
-  // componentDidMount(){
-  //   Dimensions.on
-  // }
 
   render() {
     // const item = undefined;
@@ -114,7 +116,7 @@ export default class MainScreen extends React.PureComponent {
               </TftItemText>
             </View>
             <View style={[styles.container, styles.row]}>
-              <View style={[styles.container, styles.wrap, styles.row, style.centered]}>
+              <View style={[styles.container, styles.centered, styles.wrap, styles.row]}>
                 <ItemAdditioner
                   item={item}
                   onlyRecipe={guess === this.guessEnum.notYet}
@@ -162,7 +164,7 @@ export default class MainScreen extends React.PureComponent {
               }
             </TftItemText>
           </View>
-          <View style={[styles.container0, styles.spaceEven]}>
+          <View style={[styles.container0, styles.spaceEven, styles.centered]}>
             <ItemAdditioner item={item} onlyRecipe={guess === this.guessEnum.notYet} />
           </View>
 
@@ -207,7 +209,7 @@ export default class MainScreen extends React.PureComponent {
                   label="New Item"
                   onPressFn={() => this.newItem(item)}
                   disabled={false}
-                  style={[style.tryAgain, { width: Dimensions.get('window').width + 200 }]}
+                  style={[style.tryAgain, { width: Dimensions.get('window').width }]}
                 />
               </WinCounterGradient>
             )
@@ -228,22 +230,32 @@ const style = EStyleSheet.create({
   },
   headerTitle: {
     paddingBottom: '20rem',
+    '@media (min-width: 640)': {
+      paddingBottom: 25,
+    },
     // maxPaddingBottom: '20'
   },
   headerText: {
     fontSize: '20rem',
     textAlign: 'center',
-    // '@media (min-width: 550)': {
-    //   fontSize: 30
-    // },
+    '@media (min-width: 640)': {
+      fontSize: 30
+    },
     // fontFamily: fantasyFont
   },
   middleContainer: {
     paddingTop: '20rem',
-    paddingBottom: '10rem'
+    paddingBottom: '10rem',
+    '@media (min-width: 640)': {
+      paddingTop: 30,
+      paddingBottom: 15
+    },
   },
   mainContainer: {
     paddingTop: '10rem',
+    '@media (min-width: 640)': {
+      paddingTop: 20,
+    },
     paddingHorizontal: '3%',
     width: '100%',
   },
@@ -251,10 +263,12 @@ const style = EStyleSheet.create({
     // position: 'absolute',
     // backgroundColor: 'rgba(0,0,0,0.2)',
     bottom: 0,
-
     height: '60rem',
     alignItems: 'center',
     justifyContent: 'center',
+    '@media (min-width: 640)': {
+      height: 80,
+    },
   },
   horizontalResult: {
     margin: '12rem'

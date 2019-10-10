@@ -22,13 +22,20 @@ export default class ItemDetails extends React.PureComponent {
     };
   }
 
+  // TODO clear this and use height and width as props.
   componentDidMount() {
-    this.dimensionListener = Dimensions.addEventListener('change', (event) => {
-      const { width, height } = event.window;
-      this.setState({
-        width,
-        height
-      });
+    this.dimensionListener = Dimensions.addEventListener('change', this.onChangeDimension);
+  }
+
+  componentWillUnmount() {
+    Dimensions.removeEventListener('change', this.onChangeDimension);
+  }
+
+  onChangeDimension = (event) => {
+    const { width, height } = event.window;
+    this.setState({
+      width,
+      height
     });
   }
 
@@ -53,7 +60,7 @@ export default class ItemDetails extends React.PureComponent {
           }}
           >
             <View style={[style.textContainer, styles.centered, styles.shrink]}>
-              <TftItemText>{item.description}</TftItemText>
+              <TftItemText style={style.details}>{item.description}</TftItemText>
             </View>
           </View>
         </View>
@@ -78,12 +85,25 @@ ItemDetails.propTypes = propTypes;
 const style = EStyleSheet.create({
   title: {
     fontSize: bigFontSize,
-    textAlign: 'center'
+    textAlign: 'center',
+    '@media (min-width: 640)': {
+      fontSize: 38,
+    },
+  },
+  description: {
+    fontSize: bigFontSize,
+    textAlign: 'center',
+    '@media (min-width: 640)': {
+      fontSize: 30,
+    },
   },
   textContainer: {
     padding: 12,
   },
   details: {
     fontSize: '18rem',
+    '@media (min-width: 640)': {
+      fontSize: 28,
+    },
   }
 });

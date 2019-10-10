@@ -6,6 +6,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { moderateScale } from 'react-native-size-matters';
 
 import TftItemText from '../base/TftItemText';
 import { winningQuotesArray, loosingQuotesArray } from '../../constants';
@@ -22,8 +23,8 @@ export default class Result extends React.PureComponent {
 
     const arrayOfQuotes = success ? winningQuotesArray : loosingQuotesArray;
     const firstLine = success
-      ? <Ionicons name="ios-thumbs-up" size={40} color={winningColor} />
-      : <MaterialCommunityIcons name="emoticon-poop" size={40} color={loosingColor} />;
+      ? <Ionicons name="ios-thumbs-up" size={moderateScale(40, 0.5)} color={winningColor} />
+      : <MaterialCommunityIcons name="emoticon-poop" size={moderateScale(40, 0.5)} color={loosingColor} />;
     const secondLine = success
       ? arrayOfQuotes[Math.floor(Math.random() * arrayOfQuotes.length)]
       : loosingQuotesArray[Math.floor(Math.random() * loosingQuotesArray.length)];
@@ -47,7 +48,10 @@ Result.defaultProps = {
 const style = EStyleSheet.create({
   friendlyText: {
     fontSize: '18rem',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    '@media (min-width: 640)': {
+      fontSize: 30,
+    },
   },
   winningQuote: {
     color: winningColor

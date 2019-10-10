@@ -42,6 +42,9 @@ const myButtonStyle = EStyleSheet.create({
     textAlignVertical: 'center',
     color: '#175d73',
     fontSize: '20rem',
+    '@media (min-width: 640)': {
+      fontSize: 35,
+    },
     fontWeight: '600',
   }
 });

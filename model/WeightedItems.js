@@ -1,7 +1,7 @@
 import { AsyncStorage } from 'react-native';
 import { itemsDto } from './itemsDto';
 import * as constants from '../constants';
-import { isObjectEmpty } from '../helper';
+import { isObjectEmpty } from '../helpers/objectHelper';
 
 /**
  * A  class that stocks weightedItems in asyncStorage

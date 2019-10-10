@@ -66,6 +66,9 @@ ItemAdditioner.defaultProps = {
 const style = EStyleSheet.create({
   itemEquation: {
     padding: '15rem',
+    '@media (min-width: 640)': {
+      padding: 20,
+    },
     marginBottom: 15,
     borderRadius: 10,
     backgroundColor: 'rgba(255, 255, 255, 0.12)',
@@ -74,6 +77,10 @@ const style = EStyleSheet.create({
 
   },
   itemContainer: {
-    marginHorizontal: '10%'
+    marginHorizontal: '10%',
+    '@media (min-width: 640)': {
+      width: 100,
+      height: 100,
+    },
   }
 });
