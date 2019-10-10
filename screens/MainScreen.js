@@ -96,34 +96,41 @@ export default class MainScreen extends React.PureComponent {
     }
     if (landscape && guess !== this.guessEnum.notYet) {
       return (
-        <View style={[styles.centered, styles.container]}>
+        <View style={[styles.centered, styles.container0]}>
+          <View style={[styles.container, styles.centered, style.headerTitle]}>
+            <TftItemText style={style.headerText}>
+              {
+                guess === this.guessEnum.fail
+                  ? 'Nope, the combination was in fact:'
+                  : guess === this.guessEnum.success
+                    ? 'The item combination was indeed:'
+                    : 'What item results of the following combination?'
+              }
+            </TftItemText>
+          </View>
           <View style={[
             styles.spaceAround,
             styles.centered,
-            styles.container,
+            styles.container0,
             style.mainContainer,
             styles.spaceEven]}
           >
-            <View style={[styles.container0, styles.centered, style.headerTitle]}>
-              <TftItemText style={style.headerText}>
-                {
-                  guess === this.guessEnum.fail
-                    ? 'Nope, the combination was in fact:'
-                    : guess === this.guessEnum.success
-                      ? 'The item combination was indeed:'
-                      : 'What item results of the following combination?'
-                }
-              </TftItemText>
-            </View>
-            <View style={[styles.container, styles.row]}>
-              <View style={[styles.container, styles.centered, styles.wrap, styles.row]}>
+            <View style={[styles.container0, styles.row]}>
+              <View style={[
+                styles.container,
+                styles.centered,
+                styles.wrap,
+                styles.row,
+                styles.shrink
+              ]}
+              >
                 <ItemAdditioner
                   item={item}
                   onlyRecipe={guess === this.guessEnum.notYet}
                   vertical={false}
                 />
               </View>
-              <View style={[styles.container, styles.centered, style.horizontalResult, styles.half]}>
+              <View style={[styles.container0, styles.centered, style.horizontalResult, styles.half, styles.shrink]}>
                 <Result success={guess === this.guessEnum.success} />
               </View>
             </View>
@@ -131,14 +138,16 @@ export default class MainScreen extends React.PureComponent {
           {
             guess === this.guessEnum.notYet ? null
               : (
-                <WinCounterGradient styleFromParent={style.tryAgain} winNumber={winCounter}>
-                  <TftButton
-                    label="New Item"
-                    onPressFn={() => this.newItem(item)}
-                    disabled={false}
-                    style={[style.tryAgain, { width: Dimensions.get('window').width + 200 }]}
-                  />
-                </WinCounterGradient>
+                <View style={style.winCounterContainer}>
+                  <WinCounterGradient styleFromParent={style.tryAgain} winNumber={winCounter}>
+                    <TftButton
+                      label="New Item"
+                      onPressFn={() => this.newItem(item)}
+                      disabled={false}
+                      style={[style.tryAgain, { width: Dimensions.get('window').width + 200 }]}
+                    />
+                  </WinCounterGradient>
+                </View>
               )
           }
         </View>
@@ -262,7 +271,7 @@ const style = EStyleSheet.create({
   tryAgain: {
     // position: 'absolute',
     // backgroundColor: 'rgba(0,0,0,0.2)',
-    bottom: 0,
+    // bottom: '10%',
     height: '60rem',
     alignItems: 'center',
     justifyContent: 'center',
@@ -272,5 +281,9 @@ const style = EStyleSheet.create({
   },
   horizontalResult: {
     margin: '12rem'
+  },
+  winCounterContainer: {
+    flex: 1,
+    justifyContent: 'flex-end'
   }
 });
