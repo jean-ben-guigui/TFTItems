@@ -12,7 +12,7 @@ const propTypes = {
 };
 
 export default class ItemDetails extends React.PureComponent {
-
+  Ò
   constructor(props) {
     super(props);
     const { height, width } = Dimensions.get('window');

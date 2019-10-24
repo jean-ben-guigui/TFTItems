@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Dimensions
+  View, Dimensions, Image
 } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import propTypes from 'prop-types';
@@ -11,6 +11,7 @@ import ItemAdditioner from '../components/items/ItemAdditioner';
 import Result from '../components/Results/Result';
 import WinCounterGradient from '../components/Results/WinCounterGradient';
 
+import ExplanationModal from '../components/base/ExplanationModal';
 import WeightedItems from '../model/WeightedItems';
 import { itemsDto } from '../model/itemsDto';
 import TftItemText from '../components/base/TftItemText';
@@ -18,6 +19,8 @@ import { winningNumber } from '../constants';
 import TftButton from '../components/base/TftButton';
 import { styles } from '../genericStyles';
 import { getKeyByValue } from '../helpers/objectHelper';
+
+const allItemsImage = require('../assets/images/allItems.png');
 
 export default class MainScreen extends React.PureComponent {
   constructor(props) {
@@ -89,6 +92,7 @@ export default class MainScreen extends React.PureComponent {
     } = this.state;
     const { items } = this.props;
     const landscape = height < width;
+    const imageSize = landscape ? height : width;
     if (!item) {
       return (
         <LoaderScreen reload={() => this.newItem()} />
@@ -130,7 +134,14 @@ export default class MainScreen extends React.PureComponent {
                   vertical={false}
                 />
               </View>
-              <View style={[styles.container0, styles.centered, style.horizontalResult, styles.half, styles.shrink]}>
+              <View style={[
+                styles.container0,
+                styles.centered,
+                style.horizontalResult,
+                styles.half,
+                styles.shrink
+              ]}
+              >
                 <Result success={guess === this.guessEnum.success} />
               </View>
             </View>
@@ -154,75 +165,92 @@ export default class MainScreen extends React.PureComponent {
       );
     }
     return (
-      <View style={[styles.centered, styles.container]}>
-        <View style={[
-          styles.spaceAround,
-          styles.centered,
-          styles.container,
-          style.mainContainer,
-          styles.spaceEven]}
-        >
-          <View style={[styles.container0, styles.centered, style.headerTitle]}>
-            <TftItemText style={style.headerText}>
-              {
-                guess === this.guessEnum.fail
-                  ? 'Nope, the combination was in fact:'
-                  : guess === this.guessEnum.success
-                    ? 'The item combination was indeed:'
-                    : 'What item results of the following combination?'
+      <View style={[styles.container]}>
+        <ExplanationModal>
+          <View style={[styles.container, styles.centered]}>
+            <Image
+              style={
+                {
+                  width: imageSize,
+                  height: imageSize
+                }
               }
-            </TftItemText>
-          </View>
-          <View style={[styles.container0, styles.spaceEven, styles.centered]}>
-            <ItemAdditioner item={item} onlyRecipe={guess === this.guessEnum.notYet} />
+              resizeMode="contain"
+              source={allItemsImage}
+            />
           </View>
 
-          {
-            guess === this.guessEnum.notYet
-              ? (
-                <View style={[styles.container, styles.centered, styles.grow]}>
-                  <ItemTable
-                    onPress={
-                      (itemName) => {
-                        const itemKey = getKeyByValue(itemsDto, item);
-                        if (itemName === item.displayName) {
-                          items.onFoundItem(itemKey);
-                          this.setState(
-                            {
-                              guess: this.guessEnum.success,
-                              winCounter: winCounter >= winningNumber ? winCounter : winCounter + 1
-                            }
-                          );
-                        } else {
-                          items.onFailedItem(itemKey);
-                          this.setState(
-                            {
-                              guess: this.guessEnum.fail,
-                              winCounter: winCounter <= -winningNumber ? winCounter : winCounter - 1
-                            }
-                          );
+        </ExplanationModal>
+        <View style={[styles.centered, styles.container]}>
+          <View style={[
+            styles.spaceAround,
+            styles.centered,
+            styles.container,
+            style.mainContainer,
+            styles.spaceEven]}
+          >
+            <View style={[styles.container0, styles.centered, style.headerTitle]}>
+              <TftItemText style={style.headerText}>
+                {
+                  guess === this.guessEnum.fail
+                    ? 'Nope, the combination was in fact:'
+                    : guess === this.guessEnum.success
+                      ? 'The item combination was indeed:'
+                      : 'What item results of the following combination?'
+                }
+              </TftItemText>
+            </View>
+            <View style={[styles.container0, styles.spaceEven, styles.centered]}>
+              <ItemAdditioner item={item} onlyRecipe={guess === this.guessEnum.notYet} />
+            </View>
+
+            {
+              guess === this.guessEnum.notYet
+                ? (
+                  <View style={[styles.container, styles.centered, styles.grow]}>
+                    <ItemTable
+                      onPress={
+                        (itemName) => {
+                          const itemKey = getKeyByValue(itemsDto, item);
+                          if (itemName === item.displayName) {
+                            items.onFoundItem(itemKey);
+                            this.setState(
+                              {
+                                guess: this.guessEnum.success,
+                                winCounter: winCounter >= winningNumber ? winCounter : winCounter + 1
+                              }
+                            );
+                          } else {
+                            items.onFailedItem(itemKey);
+                            this.setState(
+                              {
+                                guess: this.guessEnum.fail,
+                                winCounter: winCounter <= -winningNumber ? winCounter : winCounter - 1
+                              }
+                            );
+                          }
                         }
                       }
-                    }
+                    />
+                  </View>
+                )
+                : <Result success={guess === this.guessEnum.success} />
+            }
+          </View>
+          {
+            guess === this.guessEnum.notYet ? null
+              : (
+                <WinCounterGradient styleFromParent={style.tryAgain} winNumber={winCounter}>
+                  <TftButton
+                    label="New Item"
+                    onPressFn={() => this.newItem(item)}
+                    disabled={false}
+                    style={[style.tryAgain, { width: Dimensions.get('window').width }]}
                   />
-                </View>
+                </WinCounterGradient>
               )
-              : <Result success={guess === this.guessEnum.success} />
           }
         </View>
-        {
-          guess === this.guessEnum.notYet ? null
-            : (
-              <WinCounterGradient styleFromParent={style.tryAgain} winNumber={winCounter}>
-                <TftButton
-                  label="New Item"
-                  onPressFn={() => this.newItem(item)}
-                  disabled={false}
-                  style={[style.tryAgain, { width: Dimensions.get('window').width }]}
-                />
-              </WinCounterGradient>
-            )
-        }
       </View>
     );
   }
