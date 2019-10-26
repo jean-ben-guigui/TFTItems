@@ -4,6 +4,8 @@ import {
 } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import propTypes from 'prop-types';
+import { Ionicons } from '@expo/vector-icons';
+import { moderateScale } from 'react-native-size-matters';
 
 import LoaderScreen from '../components/base/ReloadScreen';
 import ItemTable from '../components/items/ItemTable';
@@ -21,6 +23,8 @@ import { styles } from '../genericStyles';
 import { getKeyByValue } from '../helpers/objectHelper';
 
 const allItemsImage = require('../assets/images/allItems.png');
+
+const modalPadding = 20;
 
 export default class MainScreen extends React.PureComponent {
   constructor(props) {
@@ -166,21 +170,49 @@ export default class MainScreen extends React.PureComponent {
     }
     return (
       <View style={[styles.container]}>
-        <ExplanationModal>
-          <View style={[styles.container, styles.centered]}>
-            <Image
-              style={
-                {
-                  width: imageSize,
-                  height: imageSize
-                }
-              }
-              resizeMode="contain"
-              source={allItemsImage}
-            />
-          </View>
+        <View style={{
+          position: 'absolute', top: 2, left: 5, zIndex: 1
+        }}
+        >
+          <ExplanationModal>
+            <View style={[styles.container, styles.centered, style.modalContainer]}>
+              <View style={[styles.container0, styles.centered, styles.grow, styles.wrap, styles.column]}>
+                <View style={[{ width }, styles.centered]}>
+                  <TftItemText>
+                    In this game, you are going to improve your knowledge
+                    of items in TeamFight Tacticts.
+                    the following table is a reminder of the combination of items.
+                  </TftItemText>
+                </View>
 
-        </ExplanationModal>
+              </View>
+              <View style={[styles.container0, styles.centered]}>
+                <Image
+                  style={
+                    {
+                      width: imageSize - modalPadding,
+                      height: imageSize - modalPadding,
+                    }
+                  }
+                  resizeMode="contain"
+                  source={allItemsImage}
+                />
+              </View>
+              <View style={[
+                styles.container0,
+                styles.centered,
+                styles.grow,
+                styles.wrap,
+                styles.column
+              ]}
+              >
+                <TftItemText>You can come back to this screen by tapping the</TftItemText>
+                <Ionicons name="ios-information-circle-outline" size={moderateScale(20, 0.5)} color="white" />
+                <TftItemText>in the top left corner</TftItemText>
+              </View>
+            </View>
+          </ExplanationModal>
+        </View>
         <View style={[styles.centered, styles.container]}>
           <View style={[
             styles.spaceAround,
@@ -266,6 +298,7 @@ const style = EStyleSheet.create({
     // flex: 1
   },
   headerTitle: {
+    paddingHorizontal: '22rem',
     paddingBottom: '20rem',
     '@media (min-width: 640)': {
       paddingBottom: 25,
@@ -313,5 +346,8 @@ const style = EStyleSheet.create({
   winCounterContainer: {
     flex: 1,
     justifyContent: 'flex-end'
+  },
+  modalContainer: {
+    padding: modalPadding
   }
 });

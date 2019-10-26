@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  TouchableHighlight, View, Modal, Dimensions
+  TouchableOpacity, View, Modal
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
@@ -15,7 +15,7 @@ export default class ExplanationModal extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: false,
+      modalVisible: true,
     };
   }
 
@@ -32,24 +32,22 @@ export default class ExplanationModal extends React.PureComponent {
           animationType="slide"
           transparent={false}
           visible={modalVisible}
-          onRequestClose={() => {
-
-          }}
         >
           <View style={[styles.container, style.container]}>
-            {children}
+            <View style={{ flex: 1 }}>
+              {children}
+            </View>
             <View style={style.tryAgain}>
-              <TftButton
+              {/* <TftButton
                 label="Close"
                 onPressFn={() => this.setModalVisible(!modalVisible)}
                 disabled={false}
                 style={[style.tryAgain, { width: Dimensions.get('window').width + 200 }]}
-              />
+              /> */}
             </View>
           </View>
         </Modal>
-
-        <TouchableHighlight
+        <TouchableOpacity
           onPress={() => {
             this.setModalVisible(true);
           }}
@@ -57,7 +55,7 @@ export default class ExplanationModal extends React.PureComponent {
           <View>
             <Ionicons name="ios-information-circle-outline" size={moderateScale(20, 0.5)} color="white" />
           </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -73,6 +71,6 @@ const style = EStyleSheet.create({
     },
   },
   container: {
-    backgroundColor: '#27282e'
+    backgroundColor: 'black'
   }
 });
