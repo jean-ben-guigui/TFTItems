@@ -7,6 +7,7 @@ import {
 import { AppLoading } from 'expo';
 import { LinearGradient } from 'expo-linear-gradient';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { AsyncStorage } from 'react-native';
 
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
@@ -14,6 +15,8 @@ import { Asset } from 'expo-asset';
 import MainScreen from './screens/MainScreen';
 import { styles } from './genericStyles';
 import WeightedItems from './model/WeightedItems';
+
+let firstTime = true;
 
 function cacheImages(images) {
   return images.map((image) => {
@@ -79,15 +82,30 @@ async function _loadAssetsAsync() {
 
   // const fontAssets = cacheFonts(['Papyrus']);
   const fontAssets = Font.loadAsync({ 'open-sans': require('./assets/fonts/OpenSans-Regular.ttf') });
-  await Promise.all([imageAssets, fontAssets]);
+
+  const getFirstTime = AsyncStorage.getItem('notFirstTime');
+  const result = await Promise.all([imageAssets, fontAssets, getFirstTime]);
+  if (result[2]) {
+    firstTime = false;
+  }
 }
 
 export default class App extends React.PureComponent {
   constructor(props) {
     super(props);
-    const { width, height } = Dimensions.get('window');
+    const { width, height } = Dimensions.get('screen');
     // const entireScreenWidth = Math.sqrt(height ** 2 + width ** 2);
-    EStyleSheet.build({ $rem: (width * height) / 250000, $imageSize: '1rem' });
+    if (height > width) {
+      // note to myself: don't ever use EstyleSheet again
+      // => perform differently depending on the phone orientation when the app is launched.
+      // use size matter instead
+      // The following lines are a hack to get past that
+      EStyleSheet.build({ $rem: (width * height) / 250000, $imageSize: '1rem' });
+    } else if (height > 640) {
+      EStyleSheet.build({ $rem: (width * height) / 300000, $imageSize: '1rem' });
+    } else {
+      EStyleSheet.build({ $rem: (width * height) / 500000, $imageSize: '1rem' });
+    }
     this.items = new WeightedItems();
     this.state = {
       isReady: false,
@@ -122,7 +140,7 @@ export default class App extends React.PureComponent {
       >
         <View style={[styles.centered, styles.container]}>
           <SafeAreaView style={[styles.centered, styles.container]}>
-            <MainScreen items={this.items} />
+            <MainScreen items={this.items} firstTime={firstTime} />
           </SafeAreaView>
         </View>
       </LinearGradient>

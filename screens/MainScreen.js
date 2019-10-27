@@ -24,7 +24,7 @@ import { getKeyByValue } from '../helpers/objectHelper';
 
 const allItemsImage = require('../assets/images/allItems.png');
 
-const modalPadding = 20;
+const modalPadding = 40;
 
 export default class MainScreen extends React.PureComponent {
   constructor(props) {
@@ -94,9 +94,11 @@ export default class MainScreen extends React.PureComponent {
     const {
       item, guess, winCounter, height, width
     } = this.state;
+    const { firstTime } = this.props;
     const { items } = this.props;
     const landscape = height < width;
-    const imageSize = landscape ? height : width;
+    const imageSize = landscape ? height / 1.4 : width;
+    const iSize = moderateScale(20, 0.3);
     if (!item) {
       return (
         <LoaderScreen reload={() => this.newItem()} />
@@ -170,18 +172,21 @@ export default class MainScreen extends React.PureComponent {
     }
     return (
       <View style={[styles.container]}>
-        <View style={{
-          position: 'absolute', top: 2, left: 5, zIndex: 1
-        }}
-        >
-          <ExplanationModal>
-            <View style={[styles.container, styles.centered, style.modalContainer]}>
-              <View style={[styles.container0, styles.centered, styles.grow, styles.wrap, styles.column]}>
-                <View style={[{ width }, styles.centered]}>
-                  <TftItemText>
+        <View style={style.modal}>
+          <ExplanationModal visible={firstTime}>
+            <View style={[
+              styles.container,
+              styles.centered,
+              style.modalContainer,
+              styles.spaceEven
+            ]}
+            >
+              <View style={[styles.container0, styles.centered, styles.wrap, styles.column]}>
+                <View style={[{ width: width - modalPadding }, styles.centered]}>
+                  <TftItemText style={[styles.centeredText, style.modalText]}>
                     In this game, you are going to improve your knowledge
-                    of items in TeamFight Tacticts.
-                    the following table is a reminder of the combination of items.
+                    of TeamFight Tacticts items.
+                    the following table is a reminder of the item combinations.
                   </TftItemText>
                 </View>
 
@@ -201,14 +206,16 @@ export default class MainScreen extends React.PureComponent {
               <View style={[
                 styles.container0,
                 styles.centered,
-                styles.grow,
                 styles.wrap,
-                styles.column
+                { width: width - modalPadding }
               ]}
               >
-                <TftItemText>You can come back to this screen by tapping the</TftItemText>
-                <Ionicons name="ios-information-circle-outline" size={moderateScale(20, 0.5)} color="white" />
-                <TftItemText>in the top left corner</TftItemText>
+                <TftItemText style={[styles.centeredText, style.modalText]}>You can come back to this screen by tapping the</TftItemText>
+                <TftItemText style={[styles.centeredText, style.modalText]}>
+                  <Ionicons name="ios-information-circle-outline" size={iSize} color="white" />
+                  <TftItemText> </TftItemText>
+                  in the top left corner
+                </TftItemText>
               </View>
             </View>
           </ExplanationModal>
@@ -348,6 +355,15 @@ const style = EStyleSheet.create({
     justifyContent: 'flex-end'
   },
   modalContainer: {
-    padding: modalPadding
+    paddingHorizontal: modalPadding,
+  },
+  modalText: {
+    fontSize: '18rem',
+    '@media (min-width: 640)': {
+      fontSize: 23,
+    },
+  },
+  modal: {
+    position: 'absolute', top: '2rem', left: '5rem', zIndex: 1
   }
 });

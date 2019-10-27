@@ -52,5 +52,9 @@ export const styles = EStyleSheet.create({
   },
   wrap: {
     flexWrap: 'wrap'
+  },
+  centeredText: {
+    textAlign: 'center',
+    textAlignVertical: 'center',
   }
 });

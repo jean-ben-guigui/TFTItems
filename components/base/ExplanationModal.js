@@ -3,24 +3,30 @@ import {
   TouchableOpacity, View, Modal
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import PropTypes from 'prop-types';
+import { Button } from 'react-native-elements';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { moderateScale } from 'react-native-size-matters';
+import { AsyncStorage } from 'react-native';
 
 import { styles } from '../../genericStyles';
-import TftButton from './TftButton';
-import TftItemText from './TftItemText';
 
 export default class ExplanationModal extends React.PureComponent {
   constructor(props) {
     super(props);
+    const { visible } = this.props;
+    this.firstTime = visible;
     this.state = {
-      modalVisible: true,
+      modalVisible: visible
     };
   }
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
+    if (this.firstTime) {
+      AsyncStorage.setItem('notFirstTime', JSON.stringify(false)).then(() => {
+        this.firstTime = false;
+      });
+    }
   }
 
   render() {
@@ -37,14 +43,7 @@ export default class ExplanationModal extends React.PureComponent {
             <View style={{ flex: 1 }}>
               {children}
             </View>
-            <View style={style.tryAgain}>
-              {/* <TftButton
-                label="Close"
-                onPressFn={() => this.setModalVisible(!modalVisible)}
-                disabled={false}
-                style={[style.tryAgain, { width: Dimensions.get('window').width + 200 }]}
-              /> */}
-            </View>
+            <Button style={style.okayButton} titleStyle={style.okayButtonTitle} title="okay" onPress={() => this.setModalVisible(!modalVisible)} />
           </View>
         </Modal>
         <TouchableOpacity
@@ -72,5 +71,14 @@ const style = EStyleSheet.create({
   },
   container: {
     backgroundColor: 'black'
+  },
+  okayButtonTitle: {
+    fontSize: '15rem',
+    '@media (min-width: 640)': {
+      fontSize: 30,
+    },
+  },
+  okayButton: {
+    margin: 20
   }
 });
