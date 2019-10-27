@@ -8,7 +8,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { moderateScale } from 'react-native-size-matters';
 import { AsyncStorage } from 'react-native';
 
-import { styles } from '../../genericStyles';
+import { styles, winningColor } from '../../genericStyles';
 
 export default class ExplanationModal extends React.PureComponent {
   constructor(props) {
@@ -43,7 +43,7 @@ export default class ExplanationModal extends React.PureComponent {
             <View style={{ flex: 1 }}>
               {children}
             </View>
-            <Button style={style.okayButton} titleStyle={style.okayButtonTitle} title="okay" onPress={() => this.setModalVisible(!modalVisible)} />
+            <Button buttonStyle={style.okayButton} titleStyle={style.okayButtonTitle} title="okay" onPress={() => this.setModalVisible(!modalVisible)} />
           </View>
         </Modal>
         <TouchableOpacity
@@ -79,6 +79,7 @@ const style = EStyleSheet.create({
     },
   },
   okayButton: {
-    margin: 20
+    margin: 20,
+    backgroundColor: '#c73cde',
   }
 });
