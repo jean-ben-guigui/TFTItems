@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "TFTitems",
-    "slug": "TFTitems",
+    "name": "TFT items",
+    "slug": "TFT-items",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -24,11 +24,13 @@
     ],
     "ios": {
       "buildNumber": "1.0.0",
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.lesfilmsduplatpays.tftitems"
     },
     "android": {
       "permissions": [],
-      "versionCode": 1
+      "versionCode": 1,
+      "package": "com.lesfilmsduplatpays.tftitems"
     },
     "androidStatusBar": {
       "barStyle": "light-content"
