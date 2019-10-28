@@ -185,7 +185,7 @@ export default class MainScreen extends React.PureComponent {
                 <View style={[{ width: width - modalPadding }, styles.centered]}>
                   <TftItemText style={[styles.centeredText, style.modalText]}>
                     In this game, you are going to improve your knowledge
-                    of TeamFight Tacticts items.
+                    of TeamFight Tactic items.
                     the following table is a reminder of the item combinations.
                   </TftItemText>
                 </View>

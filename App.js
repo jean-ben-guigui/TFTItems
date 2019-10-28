@@ -2,7 +2,7 @@
 import React from 'react';
 import {
   View, Dimensions, Image,
-  SafeAreaView
+  SafeAreaView, PixelRatio
 } from 'react-native';
 import { AppLoading } from 'expo';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -94,17 +94,21 @@ export default class App extends React.PureComponent {
   constructor(props) {
     super(props);
     const { width, height } = Dimensions.get('screen');
+    const pixelRatio = PixelRatio.get();
     // const entireScreenWidth = Math.sqrt(height ** 2 + width ** 2);
     if (height > width) {
+      if ((pixelRatio >= 2 && width > 400) || pixelRatio > 2) {
+        EStyleSheet.build({ $rem: (width * height) / 310000 });
+      }
       // note to myself: don't ever use EstyleSheet again
       // => perform differently depending on the phone orientation when the app is launched.
       // use size matter instead
       // The following lines are a hack to get past that
-      EStyleSheet.build({ $rem: (width * height) / 250000, $imageSize: '1rem' });
+      EStyleSheet.build({ $rem: (width * height) / 250000 });
     } else if (height > 640) {
-      EStyleSheet.build({ $rem: (width * height) / 300000, $imageSize: '1rem' });
+      EStyleSheet.build({ $rem: (width * height) / 300000 });
     } else {
-      EStyleSheet.build({ $rem: (width * height) / 500000, $imageSize: '1rem' });
+      EStyleSheet.build({ $rem: (width * height) / 500000 });
     }
     this.items = new WeightedItems();
     this.state = {

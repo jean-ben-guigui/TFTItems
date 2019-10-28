@@ -8,7 +8,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { moderateScale } from 'react-native-size-matters';
 import { AsyncStorage } from 'react-native';
 
-import { styles, winningColor } from '../../genericStyles';
+import { styles } from '../../genericStyles';
 
 export default class ExplanationModal extends React.PureComponent {
   constructor(props) {
