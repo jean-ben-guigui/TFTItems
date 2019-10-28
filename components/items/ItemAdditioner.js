@@ -8,7 +8,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Item from './Item';
 
-import ItemDetails from './itemDetails';
+import ItemDetails from './ItemDetails';
 import ItemDto from '../../model/itemsDto';
 import { styles } from '../../genericStyles';
 

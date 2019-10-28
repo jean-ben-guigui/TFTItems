@@ -1,4 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { moderateScale } from 'react-native-size-matters';
 
 export const mainColor = '#eba31e';
 export const mainFont = 'open-sans';
@@ -6,7 +7,7 @@ export const fantasyFont = 'Papyrus';
 export const bigFontSize = '22rem';
 export const winningColor = '#8ec778';
 export const loosingColor = '#fed268';
-export const imageSize = '50rem';
+export const imageSize = moderateScale(50, 0.5);
 
 export const styles = EStyleSheet.create({
   container: {

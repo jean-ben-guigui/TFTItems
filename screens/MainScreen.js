@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-  View, Dimensions, Image
+  View, Dimensions
 } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import propTypes from 'prop-types';
-import { Ionicons } from '@expo/vector-icons';
-import { moderateScale } from 'react-native-size-matters';
 
 import LoaderScreen from '../components/base/ReloadScreen';
 import ItemTable from '../components/items/ItemTable';
@@ -13,7 +11,6 @@ import ItemAdditioner from '../components/items/ItemAdditioner';
 import Result from '../components/Results/Result';
 import WinCounterGradient from '../components/Results/WinCounterGradient';
 
-import ExplanationModal from '../components/base/ExplanationModal';
 import WeightedItems from '../model/WeightedItems';
 import { itemsDto } from '../model/itemsDto';
 import TftItemText from '../components/base/TftItemText';
@@ -21,10 +18,8 @@ import { winningNumber } from '../constants';
 import TftButton from '../components/base/TftButton';
 import { styles } from '../genericStyles';
 import { getKeyByValue } from '../helpers/objectHelper';
+import ItemTabModal from '../components/items/ItemTabModal';
 
-const allItemsImage = require('../assets/images/allItems.png');
-
-const modalPadding = 40;
 
 export default class MainScreen extends React.PureComponent {
   constructor(props) {
@@ -98,7 +93,6 @@ export default class MainScreen extends React.PureComponent {
     const { items } = this.props;
     const landscape = height < width;
     const imageSize = landscape ? height / 1.4 : width;
-    const iSize = moderateScale(20, 0.3);
     if (!item) {
       return (
         <LoaderScreen reload={() => this.newItem()} />
@@ -107,6 +101,7 @@ export default class MainScreen extends React.PureComponent {
     if (landscape && guess !== this.guessEnum.notYet) {
       return (
         <View style={[styles.centered, styles.container0]}>
+          <ItemTabModal firstTime={firstTime} imageSize={imageSize} width={width} />
           <View style={[styles.container, styles.centered, style.headerTitle]}>
             <TftItemText style={style.headerText}>
               {
@@ -156,12 +151,12 @@ export default class MainScreen extends React.PureComponent {
             guess === this.guessEnum.notYet ? null
               : (
                 <View style={style.winCounterContainer}>
-                  <WinCounterGradient styleFromParent={style.tryAgain} winNumber={winCounter}>
+                  <WinCounterGradient styleFromParent={[style.tryAgain, { width: width - width * 0.1 }]} winNumber={winCounter}>
                     <TftButton
                       label="New Item"
                       onPressFn={() => this.newItem(item)}
                       disabled={false}
-                      style={[style.tryAgain, { width: Dimensions.get('window').width + 200 }]}
+                      style={[style.tryAgain, { width: width - width * 0.03 }]}
                     />
                   </WinCounterGradient>
                 </View>
@@ -172,54 +167,7 @@ export default class MainScreen extends React.PureComponent {
     }
     return (
       <View style={[styles.container]}>
-        <View style={style.modal}>
-          <ExplanationModal visible={firstTime}>
-            <View style={[
-              styles.container,
-              styles.centered,
-              style.modalContainer,
-              styles.spaceEven
-            ]}
-            >
-              <View style={[styles.container0, styles.centered, styles.wrap, styles.column]}>
-                <View style={[{ width: width - modalPadding }, styles.centered]}>
-                  <TftItemText style={[styles.centeredText, style.modalText]}>
-                    In this game, you are going to improve your knowledge
-                    of TeamFight Tactic items.
-                    the following table is a reminder of the item combinations.
-                  </TftItemText>
-                </View>
-
-              </View>
-              <View style={[styles.container0, styles.centered]}>
-                <Image
-                  style={
-                    {
-                      width: imageSize - modalPadding,
-                      height: imageSize - modalPadding,
-                    }
-                  }
-                  resizeMode="contain"
-                  source={allItemsImage}
-                />
-              </View>
-              <View style={[
-                styles.container0,
-                styles.centered,
-                styles.wrap,
-                { width: width - modalPadding }
-              ]}
-              >
-                <TftItemText style={[styles.centeredText, style.modalText]}>You can come back to this screen by tapping the</TftItemText>
-                <TftItemText style={[styles.centeredText, style.modalText]}>
-                  <Ionicons name="ios-information-circle-outline" size={iSize} color="white" />
-                  <TftItemText> </TftItemText>
-                  in the top left corner
-                </TftItemText>
-              </View>
-            </View>
-          </ExplanationModal>
-        </View>
+        <ItemTabModal firstTime={firstTime} imageSize={imageSize} width={width} />
         <View style={[styles.centered, styles.container]}>
           <View style={[
             styles.spaceAround,
@@ -256,7 +204,8 @@ export default class MainScreen extends React.PureComponent {
                             this.setState(
                               {
                                 guess: this.guessEnum.success,
-                                winCounter: winCounter >= winningNumber ? winCounter : winCounter + 1
+                                winCounter: winCounter >= winningNumber
+                                  ? winCounter : winCounter + 1
                               }
                             );
                           } else {
@@ -264,7 +213,8 @@ export default class MainScreen extends React.PureComponent {
                             this.setState(
                               {
                                 guess: this.guessEnum.fail,
-                                winCounter: winCounter <= -winningNumber ? winCounter : winCounter - 1
+                                winCounter: winCounter <= -winningNumber
+                                  ? winCounter : winCounter - 1
                               }
                             );
                           }
@@ -279,14 +229,16 @@ export default class MainScreen extends React.PureComponent {
           {
             guess === this.guessEnum.notYet ? null
               : (
-                <WinCounterGradient styleFromParent={style.tryAgain} winNumber={winCounter}>
-                  <TftButton
-                    label="New Item"
-                    onPressFn={() => this.newItem(item)}
-                    disabled={false}
-                    style={[style.tryAgain, { width: Dimensions.get('window').width }]}
-                  />
-                </WinCounterGradient>
+                <View style={style.winCounterContainer}>
+                  <WinCounterGradient styleFromParent={[style.tryAgain, { width: width - width * 0.1 }]} winNumber={winCounter}>
+                    <TftButton
+                      label="New Item"
+                      onPressFn={() => this.newItem(item)}
+                      disabled={false}
+                      style={[style.tryAgain, { width: width - width * 0.03 }]}
+                    />
+                  </WinCounterGradient>
+                </View>
               )
           }
         </View>
@@ -340,30 +292,19 @@ const style = EStyleSheet.create({
     // position: 'absolute',
     // backgroundColor: 'rgba(0,0,0,0.2)',
     // bottom: '10%',
+    borderRadius: 10,
     height: '60rem',
     alignItems: 'center',
     justifyContent: 'center',
     '@media (min-width: 640)': {
       height: 80,
     },
+    marginHorizontal: '3%'
   },
   horizontalResult: {
     margin: '12rem'
   },
   winCounterContainer: {
-    flex: 1,
-    justifyContent: 'flex-end'
+    paddingVertical: '15rem'
   },
-  modalContainer: {
-    paddingHorizontal: modalPadding,
-  },
-  modalText: {
-    fontSize: '18rem',
-    '@media (min-width: 640)': {
-      fontSize: 23,
-    },
-  },
-  modal: {
-    position: 'absolute', top: '2rem', left: '5rem', zIndex: 1
-  }
 });

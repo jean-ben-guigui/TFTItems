@@ -27,12 +27,9 @@ function cacheImages(images) {
   });
 }
 
-function cacheFonts(fonts) {
-  return fonts.map((font) => Font.loadAsync(font));
-}
-
 async function _loadAssetsAsync() {
   const imageAssets = cacheImages([
+    require('./assets/images/allItems.png'),
     require('./assets/images/recurve.png'),
     require('./assets/images/TearOfTheGoddess.png'),
     require('./assets/images/BFSword.png'),
