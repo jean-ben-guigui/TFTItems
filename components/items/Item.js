@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { imageSize } from '../../genericStyles';
@@ -31,7 +31,7 @@ const style = EStyleSheet.create({
   image: {
     width: imageSize,
     height: imageSize,
-    borderRadius: 10,
+    borderRadius: Platform.OS === 'android' ? 3 : 10,
     '@media (min-width: 640)': {
       width: 80,
       height: 80,
