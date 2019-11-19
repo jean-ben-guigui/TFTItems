@@ -15,7 +15,7 @@ const thornmail = require('../assets/images/Thornmail.png');
 const pd = require('../assets/images/PhantomDancer.png');
 const sb = require('../assets/images/SwordBreaker.png');
 const rb = require('../assets/images/RedBuff.png');
-const kv = require('../assets/images/KnightsVow.png');
+const ba = require('../assets/images/BerserkerAxe.png');
 const th = require('../assets/images/TitanicHydra.png');
 const Morellonomicon = require('../assets/images/Morellonomicon.png');
 const Redemption = require('../assets/images/Redemption.png');
@@ -24,17 +24,17 @@ const warmog = require('../assets/images/WarmogsArmor.png');
 const fm = require('../assets/images/FrozenMallet.png');
 const guinsoo = require('../assets/images/GuinsoosRageblade.png');
 const rabadon = require('../assets/images/RabadonsDeathcap.png');
-const Yuumi = require('../assets/images/Yuumi.png');
+const wm = require('../assets/images/WardensMail.png');
 const ionic = require('../assets/images/IonicSpark.png');
 const luden = require('../assets/images/LudensEcho.png');
 const Hush = require('../assets/images/Hush.png');
-const cb = require('../assets/images/CursedBlade.png');
+const mc = require('../assets/images/MagesCap.png');
 const runaan = require('../assets/images/RunaansHurricane.png');
 const claw = require('../assets/images/DragonsClaw.png');
 const rfc = require('../assets/images/RapidFirecannon.png');
 const botrk = require('../assets/images/BladeOfTheRuinedKing.png');
 const fon = require('../assets/images/ForceOfNature.png');
-const Darkin = require('../assets/images/Darkin.png');
+const ic = require('../assets/images/InfernosCinder.png');
 const seraph = require('../assets/images/SeraphsEmbrace.png');
 const statikk = require('../assets/images/StatikkShiv.png');
 const crossbow = require('../assets/images/RepeatingCrossbow.png');
@@ -43,7 +43,7 @@ const ig = require('../assets/images/IcebornGauntlet.png');
 const quicksilver = require('../assets/images/Quicksilver.png');
 const trapClaw = require('../assets/images/TrapClaw.png');
 const tg = require('../assets/images/ThiefsGloves.png');
-const mittens = require('../assets/images/Mittens.png');
+const tol = require('../assets/images/TalismanofLight.png');
 const deathblade = require('../assets/images/Deathblade.png');
 const gs = require('../assets/images/GiantSlayer.png');
 
@@ -76,7 +76,7 @@ export const itemsDto = {
   thornmail: new ItemDto('Thornmail', 'Reflect 100% of mitigated damage taken from attacks as magic damage.', new Recipe(basicItems.Vest, basicItems.Vest), thornmail),
   pd: new ItemDto('Phantom Dancer', 'Wearer dodges all Critical Strikes.', new Recipe(basicItems.Vest, basicItems.Recurve), pd),
   sb: new ItemDto('Sword Breaker', 'Attacks have a 25% chance to disarm.', new Recipe(basicItems.Vest, basicItems.Cloak), sb),
-  kv: new ItemDto('Knight’s Vow', 'Wearer is also a Knight.', new Recipe(basicItems.Vest, basicItems.Spatula), kv),
+  wm: new ItemDto('Warden\'s Mail', 'Wearer is also a Warden.', new Recipe(basicItems.Vest, basicItems.Spatula), wm),
   rb: new ItemDto('Red Buff', ' Attacks burn for 20% of max HP over 10s and reduce healing by 80%.', new Recipe(basicItems.Vest, basicItems.Belt), rb),
   th: new ItemDto('Titanic Hydra', 'Attacks deal 10% of the wearer\'s max HP as splash.', new Recipe(basicItems.Belt, basicItems.Recurve), th),
   Morellonomicon: new ItemDto('Morellonomicon', 'Spells deal burn damage equal to 20% of enemy’s max hp over 10s & reduce healing by 80%.', new Recipe(basicItems.Belt, basicItems.Rod), Morellonomicon),
@@ -86,18 +86,18 @@ export const itemsDto = {
   fm: new ItemDto('Frozen Mallet', 'Wearer is also a Glacial', new Recipe(basicItems.Belt, basicItems.Spatula), fm),
   guinsoo: new ItemDto('Guinsoo\'s Rageblade', 'Attacks grant 5% Attack Speed. Stacks infinitely.', new Recipe(basicItems.Rod, basicItems.Recurve), guinsoo),
   rabadon: new ItemDto('Rabadon\'s Deathcap', 'Wearer\'s Ability Damage increased by 50%.', new Recipe(basicItems.Rod, basicItems.Rod), rabadon),
-  Yuumi: new ItemDto('Yuumi', 'Wearer is also a Sorcerer.', new Recipe(basicItems.Rod, basicItems.Spatula), Yuumi),
+  ic: new ItemDto('Inferno\'s Cinder', 'Wearer is also an Inferno.', new Recipe(basicItems.Rod, basicItems.Spatula), ic),
   ionic: new ItemDto('Ionic Spark', 'Whenever an enemy casts a spell, they take 125 true damage.', new Recipe(basicItems.Rod, basicItems.Cloak), ionic),
   luden: new ItemDto('Luden\'s Echo', 'Deal 180 splash damage on ability hit.', new Recipe(basicItems.Rod, basicItems.Tear), luden),
   Hush: new ItemDto('Hush', '33% chance on hit to prevent the enemy champion from gaining mana for 4 seconds.', new Recipe(basicItems.Cloak, basicItems.Tear), Hush),
-  cb: new ItemDto('Cursed Blade', 'Attacks have a 20% chance to Shrink (Reduce enemy\'s star level by 1).', new Recipe(basicItems.Cloak, basicItems.Recurve), cb),
-  runaan: new ItemDto('Runaan\'s Hurricane', 'Attacks hit 1 additional enemy. This extra hit does 75% damage and applies on-hit effects.', new Recipe(basicItems.Cloak, basicItems.Spatula), runaan),
+  tol: new ItemDto('Talisman of light', 'Wearer is alos a Light', new Recipe(basicItems.Cloak, basicItems.Recurve), tol),
+  runaan: new ItemDto('Runaan\'s Hurricane', 'Attacks hit 1 additional enemy. This extra hit does 75% damage and applies on-hit effects.', new Recipe(basicItems.Cloak, basicItems.Recurve), runaan),
   claw: new ItemDto('Dragon’s Claw', '83% resistance to magic damage.', new Recipe(basicItems.Cloak, basicItems.Cloak), claw),
   statikk: new ItemDto('Stattik Shiv', 'Every 3rd attack deals 100 splash magical damage to 2 additional targets.', new Recipe(basicItems.Recurve, basicItems.Tear), statikk),
   rfc: new ItemDto('Rapid Fire Cannon', 'Attacks cannot be dodged. Attack Range is doubled.', new Recipe(basicItems.Recurve, basicItems.Recurve), rfc),
   botrk: new ItemDto('Blade of the Ruined King', 'Wearer is also a Blademaster.', new Recipe(basicItems.Recurve, basicItems.Spatula), botrk),
   fon: new ItemDto('Force of Nature', 'Gain +1 team size.', new Recipe(basicItems.Spatula, basicItems.Spatula), fon),
-  Darkin: new ItemDto('Darkin', 'Wearer is also a Demon.', new Recipe(basicItems.Spatula, basicItems.Tear), Darkin),
+  mc: new ItemDto('Mage\'s cape', 'Wearer is also a Mage.', new Recipe(basicItems.Spatula, basicItems.Tear), mc),
   seraph: new ItemDto('Seraph\'s Embrace', 'Regain 20 mana each time a spell is cast.', new Recipe(basicItems.Tear, basicItems.Tear), seraph),
   crossBow: new ItemDto('Repeating Crossbow', 'On death, this jumps to an allied champion and grants an additional 20% Attack Speed & Critical Strike chance.', new Recipe(basicItems.Gloves, basicItems.Recurve), crossbow),
   jg: new ItemDto('Jeweled Gauntlet', 'Your spells can crit', new Recipe(basicItems.Gloves, basicItems.Rod), jg),
@@ -105,7 +105,7 @@ export const itemsDto = {
   quicksilver: new ItemDto('Quicksilver', 'When CC’d, cleanse the CC. 5 second cooldown.', new Recipe(basicItems.Gloves, basicItems.Cloak), quicksilver),
   trapClaw: new ItemDto('Trap Claw', 'On combat begin, gain a spell shield. When it breaks, stun the champion who broke the shield for 5 seconds.', new Recipe(basicItems.Gloves, basicItems.Belt), trapClaw),
   tg: new ItemDto('Thief\'s Gloves', 'This item takes all three item slots. On round begin, copy two random items.', new Recipe(basicItems.Gloves, basicItems.Gloves), tg),
-  mittens: new ItemDto('Mittens', 'Wearer is also a Yordle', new Recipe(basicItems.Gloves, basicItems.Spatula), mittens),
+  ba: new ItemDto('Berserker Axe', 'Wearer is also a Berserker', new Recipe(basicItems.Gloves, basicItems.Spatula), ba),
   deathblade: new ItemDto('Deathblade', 'On a kill or assist, gain an additional 15 Attack Damage until end of combat (Stacks infinitely).', new Recipe(basicItems.BF, basicItems.BF), deathblade),
   gs: new ItemDto('Giant Slayer', 'Attacks deal an additional 5% enemy max Health as True Damage.', new Recipe(basicItems.BF, basicItems.Recurve), gs),
 };
