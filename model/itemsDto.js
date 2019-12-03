@@ -90,7 +90,7 @@ export const itemsDto = {
   ionic: new ItemDto('Ionic Spark', 'Whenever an enemy casts a spell, they take 125 true damage.', new Recipe(basicItems.Rod, basicItems.Cloak), ionic),
   luden: new ItemDto('Luden\'s Echo', 'Deal 180 splash damage on ability hit.', new Recipe(basicItems.Rod, basicItems.Tear), luden),
   Hush: new ItemDto('Hush', '33% chance on hit to prevent the enemy champion from gaining mana for 4 seconds.', new Recipe(basicItems.Cloak, basicItems.Tear), Hush),
-  tol: new ItemDto('Talisman of light', 'Wearer is alos a Light', new Recipe(basicItems.Cloak, basicItems.Recurve), tol),
+  tol: new ItemDto('Talisman of light', 'Wearer is alos a Light', new Recipe(basicItems.Cloak, basicItems.Spatula), tol),
   runaan: new ItemDto('Runaan\'s Hurricane', 'Attacks hit 1 additional enemy. This extra hit does 75% damage and applies on-hit effects.', new Recipe(basicItems.Cloak, basicItems.Recurve), runaan),
   claw: new ItemDto('Dragon’s Claw', '83% resistance to magic damage.', new Recipe(basicItems.Cloak, basicItems.Cloak), claw),
   statikk: new ItemDto('Stattik Shiv', 'Every 3rd attack deals 100 splash magical damage to 2 additional targets.', new Recipe(basicItems.Recurve, basicItems.Tear), statikk),
