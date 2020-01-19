@@ -74,7 +74,8 @@ async function _loadAssetsAsync() {
     require('./assets/images/ForceOfNature.png'),
     require('./assets/images/Darkin.png'),
     require('./assets/images/SeraphsEmbrace.png'),
-    require('./assets/images/StatikkShiv.png')
+    require('./assets/images/StatikkShiv.png'),
+    require('./assets/images/HandOfJustice.png')
   ]);
 
   // const fontAssets = cacheFonts(['Papyrus']);
