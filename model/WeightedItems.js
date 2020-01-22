@@ -72,13 +72,28 @@ export default class WeightedItems {
   setItem = async (key, weight) => {
     try {
       const okayWeight = this.boundedWeight(weight);
-      const asyncItems = JSON.parse(await AsyncStorage.getItem('@Items'));
-      if (Object.prototype.isPrototypeOf.hasOwnProperty.call(asyncItems, key)
-        && !(asyncItems[key] === okayWeight)) {
-        asyncItems[key] = okayWeight;
-        await this.set(asyncItems);
-        this._weightedItems[key] = okayWeight;
+      const asyncItems = await WeightedItems.get()
+      if (asyncItems) {
+        if (Object.prototype.isPrototypeOf.hasOwnProperty.call(asyncItems, key)
+          && !(asyncItems[key] === okayWeight)) {
+          asyncItems[key] = okayWeight;
+          await this.set(asyncItems);
+          this._weightedItems[key] = okayWeight;
+        }
+      } else {
+        console.log('error getting items from db');
       }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  deleteItem = async (key) => {
+    try {
+      const asyncItems = await WeightedItems.get();
+      delete asyncItems[key];
+      await this.set(asyncItems);
+      delete this._weightedItems[key];
     } catch (error) {
       console.log(error);
     }
@@ -124,10 +139,17 @@ export default class WeightedItems {
       sum += weight;
       if (randomKeyIndex <= sum) {
         const randomItem = itemsDto[key];
-        if (randomItem !== item) {
-          return randomItem;
+        if (randomItem) {
+          if (randomItem !== item) {
+            return randomItem;
+          }
+          this.getRandomWeightedItem(item);
+        } else {
+          // eslint-disable-next-line no-await-in-loop
+          this.deleteItem(key).then(() => {
+            this.getRandomWeightedItem(item);
+          });
         }
-        this.getRandomWeightedItem(item);
       }
     }
 
