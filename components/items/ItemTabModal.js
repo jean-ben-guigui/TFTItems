@@ -7,9 +7,10 @@ import { Ionicons } from '@expo/vector-icons';
 import ExplanationModal from '../base/ExplanationModal';
 import { styles } from '../../genericStyles';
 import TftItemText from '../base/TftItemText';
+import InfoTab from './InfoTab';
 
 const modalPadding = 40;
-const allItemsImage = require('../../assets/images/allItems.png');
+// const allItemsImage = require('../../assets/images/allItems.png');
 
 
 export default class ItemTabModal extends React.PureComponent {
@@ -38,7 +39,7 @@ export default class ItemTabModal extends React.PureComponent {
 
             </View>
             <View style={[styles.container0, styles.centered]}>
-              <Image
+              {/* <Image
                 style={
                   {
                     width: imageSize - modalPadding,
@@ -47,7 +48,8 @@ export default class ItemTabModal extends React.PureComponent {
                 }
                 resizeMode="contain"
                 source={allItemsImage}
-              />
+              /> */}
+              <InfoTab imageSize={imageSize} />
             </View>
             <View style={[
               styles.container0,
