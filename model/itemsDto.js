@@ -65,7 +65,7 @@ export default class ItemDto {
 }
 
 export const itemsDto = {
-  IE: new ItemDto('Infinity edge', 'Critical Strikes deal +125% damage.', new Recipe(basicItems.Gloves, basicItems.BF), ie),
+  IE: new ItemDto('Infinity edge', 'Critical Strikes deal +100% damage.', new Recipe(basicItems.Gloves, basicItems.BF), ie),
   Gunblade: new ItemDto('Hextech Gunblade', ' Heal for 33% of all damage dealt.', new Recipe(basicItems.BF, basicItems.Rod), gunblade),
   Shojin: new ItemDto('Spear of Shojin', 'After casting, gain 18% of max mana per attack.', new Recipe(basicItems.BF, basicItems.Tear), shojin),
   GA: new ItemDto('Guardian Angel', 'Wearer revives with 400 Health after a 2 sec delay.', new Recipe(basicItems.BF, basicItems.Vest), ga),
@@ -88,13 +88,13 @@ export const itemsDto = {
   guinsoo: new ItemDto('Guinsoo\'s Rageblade', 'Attacks grant 5% Attack Speed. Stacks infinitely.', new Recipe(basicItems.Rod, basicItems.Recurve), guinsoo),
   rabadon: new ItemDto('Rabadon\'s Deathcap', 'Wearer\'s Ability Damage increased by 75%.', new Recipe(basicItems.Rod, basicItems.Rod), rabadon),
   ic: new ItemDto('Inferno\'s Cinder', 'Wearer is also an Inferno.', new Recipe(basicItems.Rod, basicItems.Spatula), ic),
-  ionic: new ItemDto('Ionic Spark', 'Enemies within 3 hexes that cast a spell are zapped, taking magic damage qual to 200% of their maximum mana.', new Recipe(basicItems.Rod, basicItems.Cloak), ionic),
-  luden: new ItemDto('Luden\'s Echo', 'Deal 125/175/250 splash damage on ability hit. Scales with wearer’s Star Level.', new Recipe(basicItems.Rod, basicItems.Tear), luden),
+  ionic: new ItemDto('Ionic Spark', 'Enemies within 3 hexes that cast a spell are zapped, taking magic damage qual to 225% of their maximum mana.', new Recipe(basicItems.Rod, basicItems.Cloak), ionic),
+  luden: new ItemDto('Luden\'s Echo', 'Deal 150/175/225 splash damage on ability hit. Scales with wearer’s Star Level.', new Recipe(basicItems.Rod, basicItems.Tear), luden),
   Hush: new ItemDto('Hush', '20% chance on hit to prevent the enemy champion from gaining mana for 4 seconds.', new Recipe(basicItems.Cloak, basicItems.Tear), Hush),
   tol: new ItemDto('Talisman of light', 'Wearer is also a Light', new Recipe(basicItems.Cloak, basicItems.Spatula), tol),
   runaan: new ItemDto('Runaan\'s Hurricane', 'Summon a spirit that mirrors your attacks, dealing 60% damage.', new Recipe(basicItems.Cloak, basicItems.Recurve), runaan),
   claw: new ItemDto('Dragon’s Claw', '50% resistance to magic damage.', new Recipe(basicItems.Cloak, basicItems.Cloak), claw),
-  statikk: new ItemDto('Stattik Shiv', 'Every 3rd attack deals 100 splash magical damage to 3/4/5 enemies. Scales with wearer’s Star Level.', new Recipe(basicItems.Recurve, basicItems.Tear), statikk),
+  statikk: new ItemDto('Stattik Shiv', 'Every 3rd attack deals 85 splash magical damage to 3/4/5 enemies. Scales with wearer’s Star Level.', new Recipe(basicItems.Recurve, basicItems.Tear), statikk),
   rfc: new ItemDto('Rapid Fire Cannon', 'Attack Range is doubled.', new Recipe(basicItems.Recurve, basicItems.Recurve), rfc),
   botrk: new ItemDto('Blade of the Ruined King', 'Wearer is also a Blademaster.', new Recipe(basicItems.Recurve, basicItems.Spatula), botrk),
   fon: new ItemDto('Force of Nature', 'Gain +1 team size.', new Recipe(basicItems.Spatula, basicItems.Spatula), fon),
