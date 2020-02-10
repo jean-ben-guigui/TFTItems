@@ -1,7 +1,7 @@
 # TFT Items
 Mobile app designed to help TeamFight Tactics players memorize the different item combinations.
 Try it out on expo: https://expo.io/@affreux/TFT-items.
-Soon to be on the app store and the play store.
+Already on the app store, soon to be on the play store.
 
 ## Build the app:
 ### To publish on testFlight
