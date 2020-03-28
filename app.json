@@ -9,7 +9,7 @@
       "android",
       "web"
     ],
-    "version": "1.1.4",
+    "version": "1.1.6",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -20,7 +20,7 @@
       "**/*"
     ],
     "ios": {
-      "buildNumber": "1.1.4",
+      "buildNumber": "1.1.6",
       "supportsTablet": true,
       "bundleIdentifier": "com.lesfilmsduplatpays.tftitems",
       "config": {
@@ -29,7 +29,7 @@
     },
     "android": {
       "permissions": [],
-      "versionCode": 4,
+      "versionCode": 6,
       "package": "com.lesfilmsduplatpays.tftitems"
     },
     "androidStatusBar": {
