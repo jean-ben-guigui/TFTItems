@@ -8,21 +8,36 @@ const propTypes = {
   source: PropTypes.node.isRequired
 };
 
-export default class Item extends React.PureComponent {
-  render() {
-    const { children, source } = this.props;
-    return (
-      <Image
-        style={
-          style.image
-        }
-        resizeMode="contain"
-        source={source}
-      >
-        {children}
-      </Image>
-    );
-  }
+// export default class Item extends React.Component {
+//   render() {
+//     const { children, source } = this.props;
+//     return (
+//       <Image
+//         style={
+//           style.image
+//         }
+//         resizeMode="contain"
+//         source={source}
+//       >
+//         {children}
+//       </Image>
+//     );
+//   }
+// }
+
+export default function Item(props) {
+  const { children, source, customStyle } = props;
+  return (
+    <Image
+      style={
+        [style.image, customStyle]
+      }
+      resizeMode="contain"
+      source={source}
+    >
+      {children}
+    </Image>
+  );
 }
 
 Item.propTypes = propTypes;

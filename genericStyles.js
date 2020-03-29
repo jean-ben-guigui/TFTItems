@@ -8,6 +8,7 @@ export const bigFontSize = '22rem';
 export const winningColor = '#8ec778';
 export const loosingColor = '#fed268';
 export const imageSize = moderateScale(50, 0.5);
+export const explainImageSize = moderateScale(35, 0.5);
 
 export const styles = EStyleSheet.create({
   container: {
