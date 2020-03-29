@@ -71,7 +71,7 @@ export const itemsDto = {
   GA: new ItemDto('Guardian Angel', 'Wearer revives with 400 Health after a 2 sec delay.', new Recipe(basicItems.BF, basicItems.Vest), ga),
   BT: new ItemDto('Bloodthirster', 'Attacks heal for 35% of damage.', new Recipe(basicItems.BF, basicItems.Cloak), bt),
   Zeke: new ItemDto('Zeke\'s Herald', 'On start of combat, allies two spaces to the left and right gain +18% Attack Speed.', new Recipe(basicItems.BF, basicItems.Belt), zeke),
-  infiltrator: new ItemDto('Infiltrator\'s talons', 'Wearer is also an Infiltrator.', new Recipe(basicItems.BF, basicItems.Spatula), infiltrator),
+  infiltrator: new ItemDto('Infiltrator\'s talons', 'Wearer is also an Infiltrator.', new Recipe(basicItems.Recurve, basicItems.Spatula), infiltrator),
   FH: new ItemDto('Frozen Heart', 'Adjacent enemies lose 40% Attack Speed for 1 second. (stacking increases the radius of this effect, not the amount of the slow)', new Recipe(basicItems.Vest, basicItems.Tear), fh),
   locket: new ItemDto('Locket of the Iron Solari', 'On start of combat, allies two spaces to the left and right gain a shield of 250/275/350 for 8 seconds. Scales with wearer’s Star Level.', new Recipe(basicItems.Vest, basicItems.Rod), locket),
   thornmail: new ItemDto('Bramble Vest', 'Negates bonus damage from incoming critical hits. On being hit by a Basic Attack, deal 100/140/200 magic damage to all nearby enemies (once every 1 second maximum). Scales with wearer’s Star Level.', new Recipe(basicItems.Vest, basicItems.Vest), bv),
