@@ -67,5 +67,14 @@ export const styles = EStyleSheet.create({
   text: {
     fontFamily: mainFont,
     color: 'white',
-  }
+  },
+  lightyBackground: {
+    padding: '15rem',
+    '@media (min-width: 640)': {
+      padding: 20,
+    },
+    marginBottom: 15,
+    borderRadius: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.12)',
+  },
 });

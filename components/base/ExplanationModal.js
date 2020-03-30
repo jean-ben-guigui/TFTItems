@@ -35,8 +35,8 @@ export default class ExplanationModal extends React.PureComponent {
     return (
       <View>
         <Modal
-          animationType="fade"
-          transparent={false}
+          animationType="slide"
+          transparent={true}
           visible={modalVisible}
         >
           <View style={[styles.container, style.container]}>

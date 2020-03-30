@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Image, InteractionManager, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { moderateScale } from 'react-native-size-matters';
 import { Ionicons } from '@expo/vector-icons';
@@ -11,8 +11,6 @@ import ExplanationModal from '../base/ExplanationModal';
 import { styles } from '../../genericStyles';
 import TftItemText from '../base/TftItemText';
 import InfoTab from './InfoTab';
-import ItemsDetailsModal from './ItemsDetailsModal';
-import ItemDetails from './ItemDetails';
 import TouchableItem from './TouchableItem';
 
 const modalPadding = 40;
@@ -53,16 +51,6 @@ export default function ItemTabModal(props) {
 
           </View>
           <View style={[styles.container0, styles.end]}>
-            {/* <Image
-                style={
-                  {
-                    width: imageSize - modalPadding,
-                    height: imageSize - modalPadding,
-                  }
-                }
-                resizeMode="contain"
-                source={allItemsImage}
-              /> */}
             <InfoTab imageSize={imageSize} data={infoTabData} />
           </View>
           <View style={[
@@ -131,9 +119,7 @@ function infoTab(props) {
   Object.values(basicItems).forEach((item) => {
     const { imageSource, displayName } = item;
     basicItemsToDisplay.push(
-      // <View style={{ flex: 1, flexDirection: 'row', width: '500' }}>
       <Item customStyle={styleInfoTab.image} key={displayName} source={imageSource} />
-      // </View>
     );
   });
 
@@ -144,9 +130,7 @@ function infoTab(props) {
   Object.values(basicItems).forEach((itemLeft) => {
     const { imageSource, displayName } = itemLeft;
     currentRow.push(
-      // <View style={{ flex: 1, flexDirection: 'row', width: 500 }}>
       <Item key={`${displayName}1`} customStyle={styleInfoTab.image} source={imageSource} />
-      // {/* </View> */ }
     );
     Object.values(basicItems).forEach((itemTop) => {
       // eslint-disable-next-line no-restricted-syntax
@@ -172,7 +156,7 @@ function infoTab(props) {
       }
     });
     matrixToDisplay.push(
-      <View key={currentRow[0].key} style={{ flex: 0, flexDirection: 'row', padding: 0, margin: 0 }}>
+      <View key={currentRow[0].key} style={[styles.centered0, styles.row]}>
         {currentRow}
       </View>
     );

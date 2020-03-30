@@ -24,7 +24,7 @@ export default class ItemAdditioner extends React.PureComponent {
   render() {
     const { item, onlyRecipe, vertical } = this.props;
     const { item1, item2 } = item.recipe;
-    let mainContainerStyle = [styles.centered, style.itemEquation, styles.container0];
+    let mainContainerStyle = [styles.centered, styles.lightyBackground, styles.container0];
     if (!vertical) {
       mainContainerStyle = [...mainContainerStyle, styles.grow];
     }
@@ -44,7 +44,6 @@ export default class ItemAdditioner extends React.PureComponent {
           ? <View />
           : (
             <View style={[styles.centered, styles.horizontal]}>
-              {/* <MaterialCommunityIcons name="equal" size={22} color="white" /> */}
               <View style={[style.detail]}>
                 <ItemDetails item={item}>
                   <Item source={item.imageSource} />
@@ -64,15 +63,6 @@ ItemAdditioner.defaultProps = {
 };
 
 const style = EStyleSheet.create({
-  itemEquation: {
-    padding: '15rem',
-    '@media (min-width: 640)': {
-      padding: 20,
-    },
-    marginBottom: 15,
-    borderRadius: 10,
-    backgroundColor: 'rgba(255, 255, 255, 0.12)',
-  },
   detail: {
 
   },

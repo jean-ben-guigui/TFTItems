@@ -15,7 +15,8 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-underscore-dangle': 'off',
     'import/no-extraneous-dependencies': 'off',
-    "react/destructuring-assignment": 'off'
+    'react/destructuring-assignment': 'off',
+    'react/jsx-boolean-value': 'off'
   },
   'globals': {
     "fetch": false

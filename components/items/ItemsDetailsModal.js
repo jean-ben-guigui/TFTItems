@@ -23,7 +23,6 @@ const ItemsDetailsModal = (props) => {
     return () => {
       if (timeout) {
         clearTimeout(timeout);
-        // setDismissMessageVisible(false);
       }
       if (dismissMessageVisible) {
         setDismissMessageVisible(false);
@@ -38,7 +37,7 @@ const ItemsDetailsModal = (props) => {
         transparent={true}
         visible={modalVisible}
       >
-        <View style={[styles.container, style.container, style.modalBackground ]}>
+        <View style={[styles.container, style.container, style.modalBackground]}>
           <TouchableWithoutFeedback
             onPress={() => setModalVisible(!modalVisible)}
             style={[styles.container, style.container, style.modalBackground]}
@@ -47,23 +46,14 @@ const ItemsDetailsModal = (props) => {
               {children}
               {
                 dismissMessageVisible && (
-                // <View style={styles.centered}>
-                //   <Text style={styles.text}>tap anywhere to dismiss</Text>
-                // </View>
-                <View style={{position: 'absolute', left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
-                  <FadeIn>
+                <View style={style.bottomMiddleContainer}>
+                  <FadeIn duration={500}>
                     <Text style={styles.text}>tap anywhere to dismiss</Text>
                   </FadeIn>
                 </View>
                 )
               }
             </View>
-            {/* <Button
-              buttonStyle={style.okayButton}
-              titleStyle={style.okayButtonTitle}
-              title="okay"
-              onPress={() => setModalVisible(!modalVisible)}
-            /> */}
           </TouchableWithoutFeedback>
 
         </View>
@@ -106,5 +96,13 @@ const style = EStyleSheet.create({
   },
   modalBackground: {
     backgroundColor: 'rgba(0,0,0,0.8)'
+  },
+  bottomMiddleContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

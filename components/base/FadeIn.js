@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { Animated, Text, View, Easing } from 'react-native';
+import React, { useState } from 'react';
+import { Animated, Easing } from 'react-native';
 
 const FadeIn = (props) => {
-  const [fadeAnim] = useState(new Animated.Value(0));  // Initial value for opacity: 0
+  const [fadeAnim] = useState(new Animated.Value(0));
+  const { duration } = props;
 
   React.useEffect(() => {
     Animated.timing(
       fadeAnim,
       {
         toValue: 1,
-        duration: 700,
+        duration: duration ?? 700,
         easing: Easing.out(Easing.ease)
       }
     ).start();
   }, []);
 
   return (
-    <Animated.View                 // Special animatable View
+    <Animated.View
       style={{
         ...props.style,
-        opacity: fadeAnim,         // Bind opacity to animated value
+        opacity: fadeAnim,
       }}
     >
       {props.children}
