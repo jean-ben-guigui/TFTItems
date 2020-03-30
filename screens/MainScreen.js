@@ -92,7 +92,7 @@ export default class MainScreen extends React.PureComponent {
     const { firstTime } = this.props;
     const { items } = this.props;
     const landscape = height < width;
-    const imageSize = landscape ? (height / 1.4) * (1 / 9) : width * (1 / 10);
+    const imageSize = landscape ? (height * 0.5) * (1 / 9) : width * (1 / 10);
     if (!item) {
       return (
         <LoaderScreen reload={() => this.newItem()} />

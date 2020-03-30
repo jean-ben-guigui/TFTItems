@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   TouchableOpacity, View, Modal, Text, TouchableWithoutFeedback
 } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Item from './Item';
 import FadeIn from '../base/FadeIn';
@@ -48,7 +49,7 @@ const ItemsDetailsModal = (props) => {
                 dismissMessageVisible && (
                 <View style={style.bottomMiddleContainer}>
                   <FadeIn duration={500}>
-                    <Text style={styles.text}>tap anywhere to dismiss</Text>
+                    <Text style={[styles.text, style.bottomText]}>tap anywhere to dismiss</Text>
                   </FadeIn>
                 </View>
                 )
@@ -104,5 +105,8 @@ const style = EStyleSheet.create({
     bottom: 0,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  bottomText: {
+    fontSize: moderateScale(25, 0.5)
   }
 });
