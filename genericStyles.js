@@ -31,6 +31,11 @@ export const styles = EStyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  end: {
+    backgroundColor: 'transparent',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end'
+  },
   horizontal: {
     flexDirection: 'row'
   },
