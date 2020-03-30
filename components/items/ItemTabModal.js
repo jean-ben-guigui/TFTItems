@@ -25,10 +25,8 @@ export default function ItemTabModal(props) {
   const [infoTabData, setInfoTabData] = useState(null);
 
   useEffect(() => {
-    if (!infoTabData) {
-      setInfoTabData(infoTab(props));
-    }
-  });
+    setInfoTabData(infoTab(props));
+  }, [imageSize]);
 
   return (
     <View style={style.modal}>

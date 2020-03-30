@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, InteractionManager } from 'react-native';
 import FadeIn from '../base/FadeIn';
 
@@ -6,13 +6,13 @@ export default function InfoTab(props) {
   const [showImages, setShowImages] = useState(false);
   // const showImages = false;
 
-  useState(() => {
+  useEffect(() => {
     InteractionManager.runAfterInteractions(() => {
       if (!showImages) {
         setShowImages(true);
       }
     });
-  });
+  }, []);
 
   const { data, imageSize } = props;
 

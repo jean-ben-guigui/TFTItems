@@ -102,11 +102,11 @@ const style = EStyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    bottom: 0,
+    top: 20,
     justifyContent: 'center',
     alignItems: 'center'
   },
   bottomText: {
-    fontSize: moderateScale(25, 0.5)
+    fontSize: moderateScale(17, 0.5)
   }
 });
