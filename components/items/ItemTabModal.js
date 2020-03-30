@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Image, InteractionManager, StyleSheet } from 'react-native';
+import { View, Image, InteractionManager, StyleSheet, TouchableOpacity } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { moderateScale } from 'react-native-size-matters';
 import { Ionicons } from '@expo/vector-icons';
@@ -11,6 +11,9 @@ import ExplanationModal from '../base/ExplanationModal';
 import { styles } from '../../genericStyles';
 import TftItemText from '../base/TftItemText';
 import InfoTab from './InfoTab';
+import ItemsDetailsModal from './ItemsDetailsModal';
+import ItemDetails from './ItemDetails';
+import TouchableItem from './TouchableItem';
 
 const modalPadding = 40;
 // const allItemsImage = require('../../assets/images/allItems.png');
@@ -150,23 +153,24 @@ function infoTab(props) {
       for (const complexItem of Object.values(itemsDto)) {
         if (complexItem.recipe.item1 === itemLeft && complexItem.recipe.item2 === itemTop) {
           currentRow.push(
-            // <View style={{ flex: 1, flexDirection: 'row', width: 500 }}>
-            <Item key={`${complexItem.displayName} + ${itemTop.displayName}`} customStyle={styleInfoTab.image} source={complexItem.imageSource} />
-            // </View>
+            <View key={`${complexItem.displayName} ${itemLeft.displayName}`}>
+              <View key={`${complexItem.displayName} ${itemLeft.displayName}`}>
+                <TouchableItem item={complexItem} styleInfoTab={styleInfoTab} />
+              </View>
+            </View>
           );
           break;
         }
         if (complexItem.recipe.item2 === itemLeft && complexItem.recipe.item1 === itemTop) {
           currentRow.push(
-            // <View style={{ flex: 1, flexDirection: 'row', width: 500 }}>
-            <Item key={`${complexItem.displayName} + ${itemTop.displayName}`} customStyle={styleInfoTab.image} source={complexItem.imageSource} />
-            // </View>
+            <View key={`${complexItem.displayName} ${itemTop.displayName}`}>
+              <TouchableItem item={complexItem} styleInfoTab={styleInfoTab} />
+            </View>
           );
           break;
         }
       }
     });
-    // console.log('currentRow', currentRow);
     matrixToDisplay.push(
       <View key={currentRow[0].key} style={{ flex: 0, flexDirection: 'row', padding: 0, margin: 0 }}>
         {currentRow}

@@ -63,5 +63,9 @@ export const styles = EStyleSheet.create({
   centeredText: {
     textAlign: 'center',
     textAlignVertical: 'center',
+  },
+  text: {
+    fontFamily: mainFont,
+    color: 'white',
   }
 });
