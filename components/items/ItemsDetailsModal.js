@@ -102,7 +102,7 @@ const style = EStyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    top: 20,
+    top: 60,
     justifyContent: 'center',
     alignItems: 'center'
   },
