@@ -3,13 +3,13 @@
     "name": "TFT items",
     "slug": "TFT-items",
     "privacy": "public",
-    "sdkVersion": "35.0.0",
+    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.1.6",
+    "version": "1.2.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -20,7 +20,7 @@
       "**/*"
     ],
     "ios": {
-      "buildNumber": "1.1.6",
+      "buildNumber": "1.2.2",
       "supportsTablet": true,
       "bundleIdentifier": "com.lesfilmsduplatpays.tftitems",
       "config": {
@@ -29,7 +29,7 @@
     },
     "android": {
       "permissions": [],
-      "versionCode": 6,
+      "versionCode": 8,
       "package": "com.lesfilmsduplatpays.tftitems"
     },
     "androidStatusBar": {

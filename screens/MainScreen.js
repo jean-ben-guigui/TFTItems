@@ -92,7 +92,7 @@ export default class MainScreen extends React.PureComponent {
     const { firstTime } = this.props;
     const { items } = this.props;
     const landscape = height < width;
-    const imageSize = landscape ? height / 1.4 : width;
+    const imageSizeInfoTab = landscape ? (height * 0.6) * (1 / 9) : width * (1 / 10);
     if (!item) {
       return (
         <LoaderScreen reload={() => this.newItem()} />
@@ -101,7 +101,7 @@ export default class MainScreen extends React.PureComponent {
     if (landscape && guess !== this.guessEnum.notYet) {
       return (
         <View style={[styles.centered, styles.container0]}>
-          <ItemTabModal firstTime={firstTime} imageSize={imageSize} width={width} />
+          <ItemTabModal firstTime={firstTime} imageSize={imageSizeInfoTab} width={width} />
           <View style={[styles.container, styles.centered, style.headerTitle]}>
             <TftItemText style={style.headerText}>
               {
@@ -151,7 +151,10 @@ export default class MainScreen extends React.PureComponent {
             guess === this.guessEnum.notYet ? null
               : (
                 <View style={style.winCounterContainer}>
-                  <WinCounterGradient styleFromParent={[style.tryAgain, { width: width - width * 0.1 }]} winNumber={winCounter}>
+                  <WinCounterGradient
+                    styleFromParent={[style.tryAgain, { width: width - width * 0.1 }]}
+                    winNumber={winCounter}
+                  >
                     <TftButton
                       label="New Item"
                       onPressFn={() => this.newItem(item)}
@@ -167,7 +170,7 @@ export default class MainScreen extends React.PureComponent {
     }
     return (
       <View style={[styles.container]}>
-        <ItemTabModal firstTime={firstTime} imageSize={imageSize} width={width} />
+        <ItemTabModal firstTime={firstTime} imageSize={imageSizeInfoTab} width={width} />
         <View style={[styles.centered, styles.container]}>
           <View style={[
             styles.spaceAround,
@@ -230,7 +233,10 @@ export default class MainScreen extends React.PureComponent {
             guess === this.guessEnum.notYet ? null
               : (
                 <View style={style.winCounterContainer}>
-                  <WinCounterGradient styleFromParent={[style.tryAgain, { width: width - width * 0.1 }]} winNumber={winCounter}>
+                  <WinCounterGradient
+                    styleFromParent={[style.tryAgain, { width: width - width * 0.1 }]}
+                    winNumber={winCounter}
+                  >
                     <TftButton
                       label="New Item"
                       onPressFn={() => this.newItem(item)}

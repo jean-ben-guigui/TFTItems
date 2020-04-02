@@ -8,6 +8,7 @@ export const bigFontSize = '22rem';
 export const winningColor = '#8ec778';
 export const loosingColor = '#fed268';
 export const imageSize = moderateScale(50, 0.5);
+export const explainImageSize = moderateScale(35, 0.5);
 
 export const styles = EStyleSheet.create({
   container: {
@@ -29,6 +30,11 @@ export const styles = EStyleSheet.create({
     backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  end: {
+    backgroundColor: 'transparent',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end'
   },
   horizontal: {
     flexDirection: 'row'
@@ -57,5 +63,18 @@ export const styles = EStyleSheet.create({
   centeredText: {
     textAlign: 'center',
     textAlignVertical: 'center',
-  }
+  },
+  text: {
+    fontFamily: mainFont,
+    color: 'white',
+  },
+  lightyBackground: {
+    padding: '15rem',
+    '@media (min-width: 640)': {
+      padding: 20,
+    },
+    marginBottom: 15,
+    borderRadius: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.12)',
+  },
 });
