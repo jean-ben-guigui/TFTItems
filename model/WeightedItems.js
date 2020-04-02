@@ -72,7 +72,7 @@ export default class WeightedItems {
   setItem = async (key, weight) => {
     try {
       const okayWeight = this.boundedWeight(weight);
-      const asyncItems = await WeightedItems.get()
+      const asyncItems = await WeightedItems.get();
       if (asyncItems) {
         if (Object.prototype.isPrototypeOf.hasOwnProperty.call(asyncItems, key)
           && !(asyncItems[key] === okayWeight)) {

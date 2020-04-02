@@ -9,26 +9,26 @@
     "lint": "eslint *.js **/*.js"
   },
   "dependencies": {
-    "expo": "^35.0.0",
-    "expo-linear-gradient": "^7.0.0",
+    "expo": "^36.0.0",
+    "expo-linear-gradient": "~8.0.0",
     "prop-types": "^15.7.2",
-    "react": "16.8.3",
-    "react-dom": "^16.8.6",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.1.tar.gz",
     "react-native-elements": "^1.2.6",
     "react-native-extended-stylesheet": "^0.12.0",
     "react-native-size-matters": "^0.2.1",
-    "react-native-web": "^0.11.4"
+    "react-native-web": "^0.11.7"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
-    "babel-preset-expo": "^6.0.0",
+    "babel-preset-expo": "^8.0.0",
     "eslint": "^6.2.2",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
-    "jest-expo": "^34.0.1"
+    "jest-expo": "^36.0.0"
   },
   "private": true
 }

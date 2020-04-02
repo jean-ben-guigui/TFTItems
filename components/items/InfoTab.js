@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { View, InteractionManager } from 'react-native';
+import { InteractionManager } from 'react-native';
 import FadeIn from '../base/FadeIn';
 
 export default function InfoTab(props) {
   const [showImages, setShowImages] = useState(false);
-  // const showImages = false;
 
   useEffect(() => {
-    InteractionManager.runAfterInteractions(() => {
-      if (!showImages) {
-        setShowImages(true);
-      }
-    });
+    // setTimeout is there to prevent a behavior
+    // where the InteractionManager doesn't work since expo 36.0.0
+    setTimeout(() => {
+      InteractionManager.runAfterInteractions(() => {
+        if (!showImages) {
+          setShowImages(true);
+        }
+      });
+    }, 0);
   }, []);
 
-  const { data, imageSize } = props;
+  const { data } = props;
 
-  return showImages
-    ? <FadeIn duration={700}>{data}</FadeIn>
-    : <View style={{ height: 9 * imageSize + 40 }} />;
+  return (showImages && <FadeIn>{data}</FadeIn>
+  );
 }

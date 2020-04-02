@@ -14,8 +14,6 @@ import InfoTab from './InfoTab';
 import TouchableItem from './TouchableItem';
 
 const modalPadding = 40;
-// const allItemsImage = require('../../assets/images/allItems.png');
-
 
 export default function ItemTabModal(props) {
   const { firstTime, imageSize, width } = props;
@@ -49,23 +47,21 @@ export default function ItemTabModal(props) {
 
           </View>
           <View style={[styles.container0, styles.end]}>
-            <InfoTab imageSize={imageSize} data={infoTabData} />
+            <View style={{ height: imageSize * 9 + moderateScale(40, 0.5) }}>
+              <InfoTab imageSize={imageSize} data={infoTabData} />
+            </View>
           </View>
-          <View style={[
-            styles.container0,
-            styles.centered,
-            styles.wrap,
-            { width: width - modalPadding }
-          ]}
-          >
-            <TftItemText style={[styles.centeredText, style.modalText]}>
-              You can come back to this screen by tapping the
-            </TftItemText>
-            <TftItemText style={[styles.centeredText, style.modalText]}>
-              <Ionicons name="ios-information-circle-outline" size={iSize} color="white" />
-              <TftItemText> </TftItemText>
-              in the top left corner
-            </TftItemText>
+          <View style={[styles.container0, styles.centered, styles.wrap, styles.column]}>
+            <View style={[{ width: width - modalPadding }, styles.centered]}>
+              <TftItemText style={[styles.centeredText, style.modalText]}>
+                You can come back to this screen by tapping the
+              </TftItemText>
+              <TftItemText style={[styles.centeredText, style.modalText]}>
+                <Ionicons name="ios-information-circle-outline" size={iSize} color="white" />
+                <TftItemText> </TftItemText>
+                in the top left corner
+              </TftItemText>
+            </View>
           </View>
         </View>
       </ExplanationModal>
@@ -85,7 +81,7 @@ const style = EStyleSheet.create({
     paddingHorizontal: modalPadding,
   },
   modalText: {
-    fontSize: '18rem',
+    fontSize: '16rem',
     '@media (min-width: 640)': {
       fontSize: 23,
     },
